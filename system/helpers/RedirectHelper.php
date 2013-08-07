@@ -46,7 +46,7 @@ class RedirectHelper
 	}
 
 
-	public function getUrlParams( $arr )
+	public function getUrlParams()
 	{
 		$params = '';
 		foreach ($this->parameters as $p) 
