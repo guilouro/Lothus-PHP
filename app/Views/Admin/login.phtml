@@ -1,0 +1,31 @@
+<div class="row">
+  <form class="formulario span5 offset3" action="<?= URL ?>admin/login" method="POST">
+    <h2> Administração </h2>
+
+
+    <? if(isset($msg))
+          echo "<div class='alert alert-error'><i class='icon-ban-circle'></i> Login ou senha incorreta!</div>";
+
+     ?>
+
+    <div class="margem">
+      <div class="control-group">
+        <label class="control-label" for="login">Usuário</label>
+        <div class="controls">
+          <input type="text" id="login" name="login" placeholder="usuário">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="senha">Senha</label>
+        <div class="controls">
+          <input type="password" id="senha" name="senha" placeholder="senha">
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,61 @@
+<div class="row">
+	<div class="span8 offset2"> <!-- LADO ESQUERDO -->
+
+		<div class="widget widget-table action-table">
+			<div class="widget-header">
+				<i class="icon-user"></i>
+				<h3>Usuários</h3>
+			</div> <!-- /widget-header -->
+
+
+
+			<div class="widget-content">
+
+
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nome</th>
+							<th>login</th>
+							<th class="td-actions">Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+
+					<? foreach ( $info as $i): 
+							extract($i) ?>
+												
+						<tr> 
+							<td><?= $id_developer ?></td>
+							<td><?= $nome ?></td>
+							<td><?= $login ?></td>
+							<td class='td-actions'>
+
+								<!-- EDITAR -->
+								<a title='editar' href='<?= URL ?>admin/edit/usuarios/<?= $id_developer ?>' class='btn btn-small btn-success'>
+									<i class='btn-icon-only icon-pencil'></i>
+								</a>
+								
+								<!-- EXCLUIR -->
+								<a id="delete<?= $id_developer ?>" title='excluir' data='<?= URL ?>admin/del/usuarios/<?= $id_developer ?>' onclick="del(this.id)" class='btn btn-small btn-danger'>
+									<i class='btn-icon-only icon-remove'></i>
+								</a>
+							</td>
+						</tr>
+
+					<? endforeach; ?>									
+
+					</tbody>
+				</table>
+			</div> <!-- /widget-content -->						
+		</div> <!-- /widget -->	
+
+		
+
+	</div>
+
+</div> <!-- row -->
+
+
+

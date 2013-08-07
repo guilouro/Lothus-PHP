@@ -1,0 +1,133 @@
+/* ##############################################################
+
+Para ficar mais organizado, um css exclusivo para responsividade.
+
+Max-Width = 480px ----> tela de celulares antigos
+
+Max-Width = 767px ----> tela de tablets 7" e celulares top: 
+
+Max-Width = 979px -----> tela de desktops
+
+Max-Width = 1200px ----> tela de retina
+
+############################################################### 
+Min Width: 
+*/
+
+@media (min-width: 979px) {
+
+	.margem {
+		margin-left: 25%;
+	}
+}
+
+/*#############################################################
+Max Width: 480px;
+*/
+
+@media (max-width: 480px) {
+	
+	.error-container h1 {
+		font-size: 72px;
+	}
+
+	.shortcuts .shortcut {
+		width: 48%;
+	}
+	
+}
+
+/*##############################################################
+Max Width: 767px;
+*/
+
+@media (max-width: 767px) {
+    	
+	#main {
+		padding: 0 10px;
+		margin-right: -20px;
+		margin-left: -20px;	
+	}
+	
+	
+	.subnavbar {
+		margin-left: -20px;
+		margin-right: -20px;	
+	}
+	
+	
+	.subnavbar-inner {
+		height: auto;
+	}
+	
+	.subnavbar .container > ul {
+		width: 100%;
+		height: auto;
+		border: none;
+	}
+	
+	.subnavbar .container > ul > li {
+		width: 33%;
+		height: 70px;
+		margin-bottom: 0;
+		border: none;
+	}
+	
+    
+    
+    .subnavbar .container > ul > li.active > a {
+		font-size: 11px;
+    	background: transparent;
+    }
+	
+	.subnavbar .container > ul > li > a > i {	
+		display: inline-block;	
+		margin-bottom: 0;
+		font-size: 20px;
+	}
+	
+	
+	.subnavbar-open-right .dropdown-menu {
+		left: auto;
+		right: 0;
+	}
+	
+	.subnavbar-open-right .dropdown-menu:before {
+		left: auto;
+		right: 12px;
+	}
+	.subnavbar-open-right .dropdown-menu:after {
+		left: auto;
+		right: 13px;
+	}
+	
+	.rodape {
+		margin-right: -20px;
+		margin-left: -20px;
+	}
+	
+	.rodape .container {
+		padding: 0 20px;
+	}
+
+}
+   
+/*############################################################
+Max Width: 979px;
+*/
+
+@media (max-width: 979px) {
+	
+	.navbar-fixed-top {
+		position: static;		
+		margin-bottom: 0;
+	}
+	
+	.subnavbar .container {		
+		width: auto;
+	}
+
+	.shortcuts .shortcut {
+		width: 31%;
+	}
+}

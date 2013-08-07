@@ -1,0 +1,37 @@
+<?
+  $less = new lessc;  
+  $less->compileFile("css/less/Less_style.less.css","css/style.css"); 
+  $less->compileFile("css/less/Less_style_resp.less.css","css/style-responsive.css"); 
+?>
+
+
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=en><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang=en><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang=en><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->    
+
+    <head>		
+		<title>Framework</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="<?= URL ?>css/style.css" />
+        <link rel="stylesheet" type="text/css" href="<?= URL ?>css/style-responsive.css" />
+    </head>
+
+    <body>	
+
+		<div class="container">
+			{conteudo}
+		</div> 
+
+
+		<!-- ################################ IMPORT SCRIPTS ############################### -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+		<script type="text/javascript" src="<?= URL ?>js/bootstrap.min.js"></script>
+		<script src="<?= URL ?>js/seletor.js"></script>
+
+	</body>
+	
+
+</html>

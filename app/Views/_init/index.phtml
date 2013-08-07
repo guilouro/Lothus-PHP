@@ -1,0 +1,25 @@
+
+<? if(isset($status)) echo "<div class='well well-large'><center>" . $status . "</center></div>"; ?>
+
+
+<div class="span3 offset4 well">
+    <h2>Banco de dados</h2>
+
+    <form action="<?= URL ?>_init" method="post">
+        <label>Hostname</label>
+        <input type="text" name="host" value="localhost" class="span3">
+        
+        <label>Usuário</label>
+        <input type="text" name="user" value="root" class="span3">
+        
+        <label>Senha</label>
+        <input type="text" name="senha" value="" class="span3">
+        
+        <label>Nome do banco</label>
+        <input type="text" name="banco" value="" class="span3">
+        
+        <input type="submit" value="Criar banco" class="btn btn-primary pull-right">
+        <div class="clearfix"></div>
+    </form>
+
+</div>

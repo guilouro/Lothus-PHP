@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Administração</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="<?= URL ?>css/adm/adm-bootstrap.min.css">
+  <link rel="stylesheet" href="<?= URL ?>css/adm/adm-bootstrap-fileupload.min.css">
+  <link rel="stylesheet" href="<?= URL ?>css/adm/adm-bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="<?= URL ?>css/adm/font-awesome.min.css">
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+
+  <link href="<?= URL ?>css/adm/adm-style.css" rel="stylesheet" media="screen">
+  <link href="<?= URL ?>css/adm/adm-style-responsive.css" rel="stylesheet" type="text/css">
+
+  <script src="http://code.jquery.com/jquery.js"></script>
+  
+
+  <!-- IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+
+</head>
+
+  <body>
+    <div id="wrap"> <!-- TÉCNICA RODAPÉ FIXO -->
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+
+            <a class="btn btn-navbar menu" data-toggle="collapse" data-target=".nav-collapse">
+              <span>Menu</span>
+            </a>
+
+
+            <a class="brand" href="admin.php">
+              Administração
+            </a>
+
+            <div class="nav-collapse">
+              <ul class="nav pull-right">
+
+                <li class="dropdown"> <!-- Bloco Dropdown -->
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-user"></i>
+                    <span><?= $_SESSION['dados_usuario']['nome'] ?></span>
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<?= URL?>admin/logout"><i class="icon-off"></i> Sair</a></li>
+                  </ul>
+                </li> <!-- Fim bloco dropdown -->
+
+              </ul>
+
+            </div> <!-- navbar-collapse -->
+          </div> <!-- container -->
+        </div> <!-- navbar-inner -->
+      </div> <!-- navbar -->
+
+      <div class="subnavbar">
+        <div class="subnavbar-inner">
+          <div class="container">
+
+            <ul class="mainnav">
+
+
+              <!-- HOME -->
+              <li class="ativo">
+                <a href="<?= URL ?>admin">
+                  <i class="icon-home"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+              <!-- FIM HOME -->
+
+
+
+        
+              
+              <!-- CONTATOS -->
+  
+              <li>
+                <a href="<?= URL ?>admin/lista/contato">
+                  <i class="icon-envelope-alt"></i>
+                  <span>Contatos</span>
+                </a>
+              </li>
+              
+              <!-- FIM CONTATOS -->
+
+
+              
+              <!-- USUÁRIOS - DROPDOWN -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-user"></i>
+                  <span>Usuários</span>
+                  <b class="caret"></b>
+                </a>  
+              
+                <ul class="dropdown-menu">
+                  <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li>
+                  <li><a href="<?= URL ?>admin/lista/usuarios"><i class="icon-list"></i> Listar</a></li>
+                </ul>           
+              </li> 
+              <!-- FIM USUÁRIOS - DROPDOWN -->
+
+
+
+
+            </ul> <!-- mainnav -->     
+          </div> <!-- container -->
+        </div> <!-- subnavbar-inner -->
+      </div> <!-- subnavbar -->
+
+
+
+
+      <div class="main">
+        <div class="main-inner">
+          <div class="container">
+
+
+            {conteudo}
+
+
+          </div> <!-- container -->
+        </div> <!-- main-inner -->
+      </div> <!-- main -->
+
+
+
+
+
+
+
+      <div id="push"></div> <!-- EMPURRA RODAPÉ PARA BAIXO -->
+      </div> <!-- WRAPPER RODAPÉ -->
+      <div class="rodape">
+        
+        <div class="rodape-inner">
+          
+          <div class="container">
+            
+            <div class="row">
+
+              <div class="logo-rodape">
+                <a href="http://www.maxisite.net" target="_blank"><img src="<?= URL ?>img/logo-maxisite.png"></a>
+              </div> <!-- /span12 -->
+
+            </div> <!-- /row -->
+
+          </div> <!-- /container -->
+          
+        </div> <!-- /rodape-inner -->
+        
+      </div> <!-- /rodape -->
+
+
+<!-- Sessão de Javascript no final para loadar mais rápido -->
+
+
+<script src="<?= URL ?>js/bootstrap.min.js"></script>
+<script src="<?= URL ?>js/bootstrap-fileupload.min.js"></script>
+<script src="<?= URL ?>js/tinymce/tinymce.min.js"></script>
+
+<script type="text/javascript">
+
+  // TinyMCE
+  tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link unlink | fullscreen image preview | code"
+  });
+
+
+  // Função para perguntar sobre exclusão de item
+  function del (id) 
+  {
+    if(confirm('Tem certeza que deseja excluir?'))
+      window.location.href = $("#" + id).attr("data");
+  }
+
+</script>
+
+</body>
+</html>

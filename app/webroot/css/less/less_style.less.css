@@ -1,0 +1,74 @@
+
+@import url("elements.less");
+
+/* ELEMENTOS LESS
+################################################################################# */
+/*! Bootstrap v2.3.2 */
+
+// Core variables and mixins
+@import url("bootstrap/variables.less"); // Modify this for custom colors, font-sizes, etc
+@import url("bootstrap/mixins.less");
+
+// CSS Reset
+@import url("bootstrap/reset.less");
+
+// Grid system and page structure
+@import url("bootstrap/scaffolding.less");
+@import url("bootstrap/grid.less");
+@import url("bootstrap/layouts.less");
+
+// Base CSS
+@import url("bootstrap/type.less");
+@import url("bootstrap/code.less");
+@import url("bootstrap/forms.less");
+@import url("bootstrap/tables.less");
+
+// Components: common
+@import url("bootstrap/sprites.less");
+@import url("bootstrap/dropdowns.less");
+@import url("bootstrap/wells.less");
+@import url("bootstrap/component-animations.less");
+@import url("bootstrap/close.less");
+
+// Components: Buttons & Alerts
+@import url("bootstrap/buttons.less");
+@import url("bootstrap/button-groups.less");
+@import url("bootstrap/alerts.less"); // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+@import url("bootstrap/navs.less");
+@import url("bootstrap/navbar.less");
+@import url("bootstrap/breadcrumbs.less");
+@import url("bootstrap/pagination.less");
+@import url("bootstrap/pager.less");
+
+// Components: Popovers
+@import url("bootstrap/modals.less");
+@import url("bootstrap/tooltip.less");
+@import url("bootstrap/popovers.less");
+
+// Components: Misc
+@import url("bootstrap/thumbnails.less");
+@import url("bootstrap/media.less");
+@import url("bootstrap/labels-badges.less");
+@import url("bootstrap/progress-bars.less");
+@import url("bootstrap/accordion.less");
+@import url("bootstrap/carousel.less");
+@import url("bootstrap/hero-unit.less");
+
+// Utility classes
+@import url("bootstrap/utilities.less"); // Has to be last to override when necessary
+
+
+
+
+/* CORES
+################################################################################# */
+@cor-clube: #355270;
+@cor-clube-inverso: #fff;
+
+
+
+/*
+---------------------------------------------------------------------------------------------------
+STYLE SITE*/
