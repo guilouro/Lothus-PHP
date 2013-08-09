@@ -92,8 +92,6 @@ class AuthHelper
 
 	public function verificaLogin()
 	{
-		
-		//exit();
 		if(isset($_SESSION['user']) AND isset($_SESSION['dados_usuario']) AND $_SESSION['logado'] == 1 AND $_SESSION['hash'] == sha1(DATABASE_CONFIG::$default['banco']))
 		{
 			return $this -> permissaoArea();
@@ -112,7 +110,6 @@ class AuthHelper
 		//DEFINO A STRING DE COMPARAÇÃO
 		$where = $this->_userColumn . " = '" . $_SESSION['user'] . "' AND " . $this->_senhaColumn . " = '" . $_SESSION['dados_usuario']['senha'] . "'";
 		//FAZ A CONSULTA
-		//return "SELECT * FROM ´" . $this -> _tableName . "´ WHERE " . $where;
 		$this -> _bd -> _tabela = $this -> _tableName;
 		return $this -> _bd -> readLine($where);
 	}
