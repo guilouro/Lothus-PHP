@@ -7,6 +7,7 @@ class AuthHelper
 {
 
 	private $_redir;
+	private $_bd;
 	private $_tableName;
 	private $_userColumn		= 'login';
 	private $_senhaColumn		= 'senha';
@@ -26,6 +27,9 @@ class AuthHelper
 	{
 		//CRIA O OBJETO QUE AUXILIA O REDIRECIONAMENTO
 		$this->_redir = new RedirectHelper();
+
+		//INICIO O MODELO DO BANCO
+		$this -> _bd = new Model();
 	}
 
 		
@@ -38,22 +42,22 @@ class AuthHelper
 	public function login()
 	{
 
-		//INICIO O MODELO DO BANCO
-		$db = new Model();
+		
 		
 		//PASSO A TABELA QUE ESTÁ OS DADOS PARA LOGIN
-		$db->_tabela = $this->_tableName;
+		$this -> _bd->_tabela = $this->_tableName;
 		
 		//DEFINO A STRING DE COMPARAÇÃO
 		$where = $this->_userColumn . " = '" . $this->_user . "' AND " . $this->_senhaColumn . " = '" . hash('sha512', $this->_senha) . "'";
 		//FAZ A CONSULTA
-		$sql = $db -> readLine($where);
+		$sql = $this -> _bd -> readLine($where);
 
 		//SE EXISTIR ELE LOGA E CRIA A SESSÃO
 		if(count($sql) > 0 AND !empty($sql) )
 		{
 			$_SESSION['user'] = $sql[$this->_userColumn];
 			$_SESSION['dados_usuario'] = $sql;
+			//$_SESSION['dados_usuario'][$this -> _senhaColumn] = $sql[$this ->];
 			$_SESSION['logado'] = 1;
 			$_SESSION['hash'] = sha1(DATABASE_CONFIG::$default['banco']);
 
@@ -88,9 +92,11 @@ class AuthHelper
 
 	public function verificaLogin()
 	{
+		
+		//exit();
 		if(isset($_SESSION['user']) AND isset($_SESSION['dados_usuario']) AND $_SESSION['logado'] == 1 AND $_SESSION['hash'] == sha1(DATABASE_CONFIG::$default['banco']))
 		{
-			return true;
+			return $this -> permissaoArea();
 		}
 		else
 		{
@@ -98,6 +104,28 @@ class AuthHelper
 			return false;
 		}
 	}
+
+
+
+	private function permissaoArea()
+	{
+		//DEFINO A STRING DE COMPARAÇÃO
+		$where = $this->_userColumn . " = '" . $_SESSION['user'] . "' AND " . $this->_senhaColumn . " = '" . $_SESSION['dados_usuario']['senha'] . "'";
+		//FAZ A CONSULTA
+		//return "SELECT * FROM ´" . $this -> _tableName . "´ WHERE " . $where;
+		$this -> _bd -> _tabela = $this -> _tableName;
+		return $this -> _bd -> readLine($where);
+	}
+
+
+
+
+
+
+
+
+
+
 
 
 

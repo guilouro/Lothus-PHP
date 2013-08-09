@@ -24,7 +24,8 @@ class admin extends Controller
 
 
 		//AUTENTICAÇÃO
-		$this->_auth = new AuthHelper();
+		$this -> _auth = new AuthHelper();
+		$this -> _auth -> _tableName = "developer";
 
 		if($this->redir->getCurrentAction() != 'login') 
 		{
@@ -213,7 +214,6 @@ class admin extends Controller
 		if($_POST)
 		{
 			//DEFINE OS DADOS PARA O LOGIN
-			$this -> _auth -> _tableName = "developer";
 			$this -> _auth -> _user  	 = $_POST['login'];
 			$this -> _auth -> _senha 	 = $_POST['senha'];
 
