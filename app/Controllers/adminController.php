@@ -7,6 +7,7 @@ class admin extends Controller
 	private   $_auth;
 	private   $_dados;
 	private   $_orderby;
+	public 	  $pagination;
 
 	public function init($params = null)
 	{
@@ -77,7 +78,23 @@ class admin extends Controller
 			}
 		}
 
-		$this->_dados['info'] = $this->bd->read(null, null, null, $this -> _orderby);
+
+
+			
+		if(isset($this -> bd -> pagination[ $params[0] ]))
+		{
+			// PAGINAÇÃO
+			$this -> pagination = new PaginationHelper( $params[0] );
+			$this -> pagination -> _paginaAtual = (isset($params[1])) ? $params[1] : "pag1";
+			$this -> pagination -> _limite = $this -> bd -> pagination[ $params[0] ]['limit'];
+			$this->_dados['info'] = $this -> pagination -> consulta( array( 'orderby' => $this -> _orderby ) );
+			// FIM PAGINAÇÃO
+		}
+		else
+		{
+			$this->_dados['info'] = $this->bd->read(null, null, null, $this -> _orderby);
+		}
+
 		$this->view("lista_" . $params[0], $this->_dados);
 	}
 
@@ -187,7 +204,7 @@ class admin extends Controller
 		$this->_dados['dados'] = $this -> bd -> readLine($where);
 
 		//SE EXISTIR CAMPO SENHA ELE CODIFICA
-		if(isset($this->_dados['dados']['senha'])) $this->_dados['dados']['senha'] = $this->_auth->decodifica($this->_dados['dados']['senha']);
+		//if(isset($this->_dados['dados']['senha'])) $this->_dados['dados']['senha'] = $this->_auth->decodifica($this->_dados['dados']['senha']);
 
 		$this->view($params[0], $this->_dados);
 	}
@@ -236,6 +253,21 @@ class admin extends Controller
 	public function logout($params = null)
 	{
 		$this -> _auth -> logout();
+	}
+
+
+
+	public function getValor($tabela, $valor, $id)
+	{
+		$this -> bd -> _tabela = $tabela;
+		return $this -> bd -> consultaValor("SELECT {$valor} FROM {$tabela} WHERE id_" . $tabela . " = " . $id);
+	}
+
+
+	public function getLinha($tabela, $id)
+	{
+		$this -> bd -> _tabela = $tabela;
+		return $this -> bd -> consultaLinha("SELECT * FROM {$tabela} WHERE id_" . $tabela . " = " . $id);
 	}
 
 }

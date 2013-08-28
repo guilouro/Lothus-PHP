@@ -12,7 +12,7 @@ class RedirectHelper
 		header("Location: " . URL . $data);
 	}
 
-	protected function getCurrentController()
+	public function getCurrentController()
 	{
 		global $start;
 		return $start->_controller;

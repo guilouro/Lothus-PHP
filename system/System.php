@@ -19,6 +19,7 @@
 			$this->setController();
 			$this->setAction();
 			$this->setParams();
+			$this->setGets();
 		}
 
 		private function setUrl()
@@ -58,6 +59,25 @@
 				array_pop($this->_explode);
 
 			$this->_params = $this->_explode;
+		}
+
+
+
+		public function setGets()
+		{
+			$url = $_SERVER['REQUEST_URI'];
+			$url = explode("?", $url);
+
+			if(isset($url[1]))
+			{
+				$urlParams = explode("&", $url[1]);
+
+				foreach ($urlParams as $g) 
+				{
+					$get = explode("=", $g);
+					$_GET[$get[0]] = $get[1];
+				}
+			}
 		}
 
 

@@ -89,14 +89,18 @@ class Model
 	 * @param (string)$limit   - define o limit da pesquisa
 	 * @param (string)$offset  - define o offset da pesquisa
 	 * @param (string)$orderby - define a ordem para o resultado
+	 * @param (boolean)$debug  - imprime a string do sql
 	 * @version 1.0
 	 **/
-	public function read( $where = null , $limit = null , $offset = null , $orderby = null )
+	public function read( $where = null , $limit = null , $offset = null , $orderby = null, $debug = FALSE )
 	{
 		$where    = ($where   != null ? "WHERE {$where}"      : "");
 	 	$limit    = ($limit   != null ? "LIMIT {$limit}" 	  : "");
 	 	$offset   = ($offset  != null ? "OFFSET {$offset}" 	  : "");
 	 	$orderby  = ($orderby != null ? "ORDER BY {$orderby}" : "");
+
+	 	if($debug)
+	 		$this -> debug("SELECT * FROM `{$this->_tabela}` {$where} {$orderby} {$limit} {$offset}");
 
 	 	$query = $this -> db -> prepare("SELECT * FROM `{$this->_tabela}` {$where} {$orderby} {$limit} {$offset}");
 	 	$query -> execute();
@@ -114,11 +118,17 @@ class Model
 	 * @param (string)$limit   - define o limit da pesquisa
 	 * @param (string)$offset  - define o offset da pesquisa
 	 * @param (string)$orderby - define a ordem para o resultado
+	 * @param (boolean)$debug  - imprime a string do sql
 	 * @version 1.0
 	 **/
-	public function readLine( $where = null , $limit = null , $offset = null , $orderby = null )
+	public function readLine( $where = null , $limit = null , $offset = null , $orderby = null, $debug = FALSE )
 	{
 		$where    = ($where   != null ? "WHERE {$where}"      : "");
+
+		
+		if($debug)
+	 		$this -> debug("SELECT * FROM `{$this->_tabela}` {$where}");
+	 	
 
 	 	$query = $this -> db -> prepare("SELECT * FROM `{$this->_tabela}` {$where}");
 	 	$query -> execute();

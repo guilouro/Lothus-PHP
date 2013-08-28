@@ -21,7 +21,11 @@ class AuthHelper
 
 	//GETTER AND SETTER
 	public function __set($atrib, $value){  $this->$atrib = $value; }
-	public function __get($atrib){ return $value; }
+	public function __get($atrib){  return $this->$atrib; }
+	
+	
+
+
 
 	function __construct() 
 	{
@@ -42,13 +46,12 @@ class AuthHelper
 	public function login()
 	{
 
-		
-		
 		//PASSO A TABELA QUE ESTÁ OS DADOS PARA LOGIN
 		$this -> _bd->_tabela = $this->_tableName;
 		
 		//DEFINO A STRING DE COMPARAÇÃO
 		$where = $this->_userColumn . " = '" . $this->_user . "' AND " . $this->_senhaColumn . " = '" . hash('sha512', $this->_senha) . "'";
+
 		//FAZ A CONSULTA
 		$sql = $this -> _bd -> readLine($where);
 
@@ -57,23 +60,15 @@ class AuthHelper
 		{
 			$_SESSION['user'] = $sql[$this->_userColumn];
 			$_SESSION['dados_usuario'] = $sql;
-			//$_SESSION['dados_usuario'][$this -> _senhaColumn] = $sql[$this ->];
 			$_SESSION['logado'] = 1;
 			$_SESSION['hash'] = sha1(DATABASE_CONFIG::$default['banco']);
 
 			return true;
-			//$controller = $this->_controllerLogado;
-			//$action 	= $this->_actionLogado;
 		}
 		else //SE NÃO EXISTIR REDIRECIONA PARA A PAGINA DE LOGIN NOVAMENTE
 		{
 			return false;
-			//$controller = $this->_controllerErro;
-			//$action 	= $this->_actionErro;
-		}
-
-		//FAZ O REDIRECIONAMENTO
-		//$this->_redir->goToControllerAction($controller, $action);
+		}		
 	}
 
 
@@ -92,6 +87,8 @@ class AuthHelper
 
 	public function verificaLogin()
 	{
+		
+		//exit();
 		if(isset($_SESSION['user']) AND isset($_SESSION['dados_usuario']) AND $_SESSION['logado'] == 1 AND $_SESSION['hash'] == sha1(DATABASE_CONFIG::$default['banco']))
 		{
 			return $this -> permissaoArea();
@@ -110,6 +107,7 @@ class AuthHelper
 		//DEFINO A STRING DE COMPARAÇÃO
 		$where = $this->_userColumn . " = '" . $_SESSION['user'] . "' AND " . $this->_senhaColumn . " = '" . $_SESSION['dados_usuario']['senha'] . "'";
 		//FAZ A CONSULTA
+		//return "SELECT * FROM ´" . $this -> _tableName . "´ WHERE " . $where;
 		$this -> _bd -> _tabela = $this -> _tableName;
 		return $this -> _bd -> readLine($where);
 	}

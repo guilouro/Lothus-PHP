@@ -4,13 +4,19 @@
 		public $_tabela = 'developer';
 
 		public $fk = array(
-			//'categorias' => 'id_categorias'
+			// 'categorias' => 'id_categorias',
 		);
 
 
 		public $orderby = array(
-			//'categorias' => 'descricao ASC'
+			// 'titulo' => 'data DESC',
 		);
+
+
+		public $pagination = array(
+			'contato'	=> array('limit' => 5)
+		);
+
 	}
 
 ?>
