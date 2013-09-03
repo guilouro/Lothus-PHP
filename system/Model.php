@@ -332,7 +332,7 @@ class Model
 	{
 		foreach ($this -> fk as $key => $value) 
 		{
-			$order = (isset($this -> db -> orderby[$key])) ? "ORDER BY " . $this -> db -> orderby[$key] : "";
+			$order = (isset($this -> orderby[$key])) ? "ORDER BY " . $this -> orderby[$key] : "";
 			$dados[$key] = $this -> consulta("SELECT * FROM `{$key}` {$order}");
 		}
 
