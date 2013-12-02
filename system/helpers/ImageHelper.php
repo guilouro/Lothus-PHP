@@ -90,7 +90,7 @@ class ImageHelper
 
 
 		//SALVA NOVA IMAGEM
-		imagejpeg($nova, $local);
+		imagejpeg($nova, $local, 100);
 
 
 		//DESTROI ELEMENTOS
@@ -156,7 +156,7 @@ class ImageHelper
 
 
 			//SALVA NOVA IMAGEM
-			imagejpeg($nova, $local);
+			imagejpeg($nova, $local, 100);
 
 
 			//DESTROI ELEMENTOS

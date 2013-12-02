@@ -42,18 +42,22 @@ class RedirectHelper
 
 	public function setUrlParams( $arr )
 	{
-		$this->parameters[] = $arr;
+		global $start;
+		$start -> _params[] = $arr;
 	}
 
 
 	public function getUrlParams()
 	{
+		global $start;
+
 		$params = '';
-		foreach ($this->parameters as $p) 
+		foreach ($start -> _params as $p) 
 		{
 			$params .= $p . "/";
 		}
 
+		// echo $params;
 		return $params;
 	}
 }

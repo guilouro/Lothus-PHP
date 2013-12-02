@@ -49,16 +49,18 @@ class PaginationHelper
 	 */
 	public function consulta(Array $arr = null)
 	{
-	
+		// $inner = $this -> model -> innerJoin();
+
 		# DEFINE O LIMIT INICIAL DE ACORDO COM A PÁGINA ATUAL E O LIMIT DEFINIDO
 		$this -> _inicio = ($this -> getPaginaAtual() * $this -> _limite) - $this -> _limite;
 		
 		# OPÇÕES PARA CONSULTA SQL
 		$where   = (isset($arr['where'])   AND !empty($arr['where']))   ? "WHERE " . $arr['where'] : "";
 		$orderby = (isset($arr['orderby']) AND !empty($arr['orderby'])) ? "ORDER BY " . $arr['orderby'] : "";
+		$inner   = (isset($arr['inner']) AND !empty($arr['inner'])) ? $arr['inner'] : "";
 
 		# STRING DE CONSULTA 
-		$sql = "SELECT * FROM `{$this -> _model -> _tabela}` {$where} {$orderby}";
+		$sql = "SELECT * FROM `{$this -> _model -> _tabela}` {$inner} {$where} {$orderby}";
 
 		# PEGA A QUANTIDADE DE REGISTROS DA CONSULTA
 		$this -> _total_registros = count($this -> _model -> consulta($sql));
@@ -88,16 +90,22 @@ class PaginationHelper
 	{
 		$redir    =  new RedirectHelper();
 		$url 	  =  URL . $redir -> getCurrentController() . "/" . $redir -> getCurrentAction() . "/" . $redir -> getUrlParams();
-		$paramns  =  str_replace($url, "", $_SERVER['REQUEST_URI']);
-		$paramns2 =  explode("/", $paramns);
 
+
+		// RETIRA A ULTIMA BARRA CASO EXISTA
+		if($url[ strlen($url) - 1 ] == "/")
+			$url = substr($url, 0, -1);
+
+		// DIVIDE A URL
+		$paramns2 =  explode("/", $url);
+
+		//RETIRA A PAGINA DA URL
 		if(substr(end($paramns2), 0, 3) == "pag")
 			array_pop($paramns2);
 
-
-		return $url . implode("/", $paramns2);
+		//JUNTA O ARRAY EM UMA STRING E RETORNA O RESULTADO
+		return implode("/", $paramns2);
 	}
-
 
 
 
