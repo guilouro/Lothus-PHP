@@ -90,7 +90,11 @@ class ImageHelper
 
 
 		//SALVA NOVA IMAGEM
+<<<<<<< HEAD
 		imagejpeg($nova, $local, 100);
+=======
+		imagejpeg($nova, $local);
+>>>>>>> 05ed03f970b9a3a60a244d76400194e8b0cc7c74
 
 
 		//DESTROI ELEMENTOS
@@ -156,7 +160,11 @@ class ImageHelper
 
 
 			//SALVA NOVA IMAGEM
+<<<<<<< HEAD
 			imagejpeg($nova, $local, 100);
+=======
+			imagejpeg($nova, $local);
+>>>>>>> 05ed03f970b9a3a60a244d76400194e8b0cc7c74
 
 
 			//DESTROI ELEMENTOS
