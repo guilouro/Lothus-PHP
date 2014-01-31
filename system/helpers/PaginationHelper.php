@@ -89,7 +89,7 @@ class PaginationHelper
 	public function getUrl()
 	{
 		$redir    =  new RedirectHelper();
-		$url 	  =  URL . $redir -> getCurrentController() . "/" . $redir -> getCurrentAction() . "/" . $redir -> getUrlParams();
+		$url 	  =  URL . $redir -> getCurrentController() . "/" . $redir -> getCurrentAction() . "/" . $redir -> getUrlParams( true );
 
 
 		// RETIRA A ULTIMA BARRA CASO EXISTA
@@ -153,20 +153,3 @@ class PaginationHelper
 	}
 }
 
-
-
-// // PAGINAÇÃO
-
-// echo "<div style='width:100%; position:relative; text-align:center'>";
-// echo '<a href="meus_palpites.php?id=' .  $_GET['id'] . '&pag=1">'.'Primeira página&nbsp;'.'</a> &nbsp;|&nbsp; ';
-//   for($i=1; $i <= $total_paginas; $i++)
-//   {
-//        if($pagina == $i)
-//            echo " &nbsp;".$i."&nbsp; ";
-//        else
-//            echo '<a href="meus_palpites.php?id=' .  $_GET['id'] . '&pag='.$i.'">&nbsp;'.$i.'&nbsp;</a>';
-//   }
-// echo ' &nbsp;|&nbsp; <a href="meus_palpites.php?id=' .  $_GET['id'] . '&pag='.$total_paginas.'">&nbsp;Última página</a>';
-// echo "</div>";
-
-// // FIM PAGINAÇÃO

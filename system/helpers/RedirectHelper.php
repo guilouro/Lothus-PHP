@@ -1,3 +1,4 @@
+
 <?
 
 /**
@@ -10,6 +11,7 @@ class RedirectHelper
 	protected function go( $data )
 	{
 		header("Location: " . URL . $data);
+		exit();
 	}
 
 	public function getCurrentController()
@@ -29,9 +31,9 @@ class RedirectHelper
 		$this->go($controller . "/index/" . $this->getUrlParams());
 	}
 
-	public function goToAction( $action )
+	public function goToAction( $action, $paramsGlobal = FALSE )
 	{
-		$this->go($this->getCurrentController() . "/" . $action . "/" . $this->getUrlParams());
+		$this->go($this->getCurrentController() . "/" . $action . "/" . $this->getUrlParams( $paramsGlobal ));
 	}
 
 	public function goToControllerAction( $controller, $action )
@@ -44,15 +46,22 @@ class RedirectHelper
 	{
 		global $start;
 		$start -> _params[] = $arr;
+		$this->parameters[] = $arr;
 	}
 
 
-	public function getUrlParams()
+	public function getUrlParams( $paramsGlobal = FALSE )
 	{
 		global $start;
 
 		$params = '';
-		foreach ($start -> _params as $p) 
+
+		if( $paramsGlobal )
+			$arr = $start -> _params;
+		else
+			$arr = $this -> parameters;
+
+		foreach ($arr as $p) 
 		{
 			$params .= $p . "/";
 		}
