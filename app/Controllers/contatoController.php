@@ -9,7 +9,6 @@ class Contato extends Controller
 
 		if($_POST)
 		{
-
 			#DATA DO ENVIO
 			$_POST['data'] = date('Y-m-d H:i:s');
 
@@ -17,11 +16,11 @@ class Contato extends Controller
 			// #PREPARA ENVIO AUTENTICADO
 			// $email = new EmailHelper();
 			// $email -> _host    = "smtp.gmail.com";
-			// $email -> _usuario = "guilherme@maxisite.net";
+			// $email -> _usuario = "guipclouro@gmail.com";
 			// $email -> _senha   = "";
 			// $email -> _nome    = $_POST['nome'];
 			// $email -> _from    = $_POST['email'];
-			// $email -> _to 	   = "guilherme@maxisite.net";
+			// $email -> _to 	  = "guipclouro@gmail.com";
 			// $email -> _assunto = $_POST['assunto'];
 
 
@@ -29,7 +28,7 @@ class Contato extends Controller
 			$email = new EmailHelper();
 			$email -> _nome    = $_POST['nome'];
 			$email -> _from    = $_POST['email'];
-			$email -> _to 	   = "guilherme@maxisite.net";
+			$email -> _to 	   = "guipclouro@gmail.com";
 			$email -> _assunto = $_POST['assunto'];
 
 
