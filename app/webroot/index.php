@@ -32,6 +32,10 @@
 	$_SERVER['PHP_SELF'] = str_replace("app/webroot/index.php", "", $_SERVER['PHP_SELF']);
 
 	define('URL', $_SERVER['PHP_SELF']);
+	define('IMG', URL . "img/");
+	define('JS', URL . "js/");
+	define('CSS', URL . "css/");
+	
 
 
 	define( 'LIB', '../../app/Lib/' );
