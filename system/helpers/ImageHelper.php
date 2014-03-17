@@ -78,6 +78,8 @@ class ImageHelper
 
 		//CRIA A NOVA IMAGEM 
 		$nova = imagecreatetruecolor($largura, $altura);
+		imagealphablending( $nova, false );
+		imagesavealpha( $nova, true );
 		imagecopyresampled($nova, $img, 0, 0, 0, 0, $largura, $altura, $x, $y);
 
 
@@ -90,8 +92,10 @@ class ImageHelper
 
 
 		//SALVA NOVA IMAGEM
-		imagejpeg($nova, $local, 100);
-
+		if ($file_info['mime'] == "image/jpeg")
+			imagejpeg($nova, $local, 100);
+		else if ($file_info['mime'] == "image/png")
+			imagepng($nova, $local, 9);
 
 		//DESTROI ELEMENTOS
 		imagedestroy($img);
@@ -144,6 +148,8 @@ class ImageHelper
 
 			//CRIA A NOVA IMAGEM 
 			$nova = imagecreatetruecolor($largura, $altura);
+			imagealphablending( $nova, false );
+			imagesavealpha( $nova, true );
 			imagecopyresampled($nova, $img, 0, 0, 0, 0, $largura, $altura, $x, $y);
 
 
@@ -156,7 +162,10 @@ class ImageHelper
 
 
 			//SALVA NOVA IMAGEM
-			imagejpeg($nova, $local, 100);
+			if ($file_info['mime'] == "image/jpeg")
+				imagejpeg($nova, $local, 100);
+			else if ($file_info['mime'] == "image/png")
+				imagepng($nova, $local, 9);
 
 
 			//DESTROI ELEMENTOS

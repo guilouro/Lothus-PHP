@@ -1,7 +1,8 @@
 <?
   $less = new lessc;  
-  $less->compileFile("css/less/less_style.less.css","css/style.css"); 
-  $less->compileFile("css/less/less_style_resp.less.css","css/style-responsive.css"); 
+  $less -> setFormatter('compressed');
+  $less -> compileFile("css/less/less_style.less.css","css/style.css"); 
+  $less -> compileFile("css/less/less_style_resp.less.css","css/style-responsive.css"); 
 ?>
 
 
@@ -41,5 +42,4 @@
 
 	</body>
 	
-
 </html>
