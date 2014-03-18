@@ -104,7 +104,7 @@ class Model
 
 	 	$query = $this -> db -> prepare("SELECT * FROM `{$this->_tabela}` {$where} {$orderby} {$limit} {$offset}");
 	 	$query -> execute();
-	 	return $query -> fetchAll();
+	 	return $query -> fetchAll(PDO::FETCH_ASSOC);
 	}
 
 
@@ -132,7 +132,7 @@ class Model
 
 	 	$query = $this -> db -> prepare("SELECT * FROM `{$this->_tabela}` {$where}");
 	 	$query -> execute();
-	 	return $query -> fetch();
+	 	return $query -> fetch(PDO::FETCH_ASSOC);
 	}
 
 
