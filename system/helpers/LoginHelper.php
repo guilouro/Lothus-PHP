@@ -38,7 +38,7 @@ class LoginHelper
 		if(!$this -> _auth -> login())
 			return 'Login ou senha incorreta';
 		else
-			return $this -> _redir -> goToAction('index');
+			return $this -> _redir -> goToControllerAction( $this -> _auth -> _controllerLogado, $this -> _auth -> _actionLogado);
 	}
 
 
