@@ -65,7 +65,6 @@ class RedirectHelper
 			$params .= $p . "/";
 		}
 
-		// echo $params;
 		return $params;
 	}
 }
