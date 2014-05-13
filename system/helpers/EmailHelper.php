@@ -1,6 +1,6 @@
 <?
 
-class EmailHelper
+class EmailHelper extends PHPMailer
 {
 	#PHPMail
 	private $_mail	  = "";
@@ -9,7 +9,7 @@ class EmailHelper
 	private $_rost	  = "";
 
 	#Email HTML
-	private $_html	  = false;
+	private $_html	  = true;
 
 	#nome que aparecerá no envio 
 	private $_nome	  = ""; 
@@ -40,11 +40,9 @@ class EmailHelper
 
 	public function __construct() 
 	{
-		#instancia o objeto
-		$this -> _mail = new PHPMailer();
 
 		#seta a linguagem
-		$this -> _mail-> SetLanguage("br", HELPERS . "/Email/language/");
+		$this-> SetLanguage("br", HELPERS . "/Email/language/");
 	}
 	
 	
@@ -53,37 +51,37 @@ class EmailHelper
 		
 
 		#enviar via SMTP
-		$this -> _mail -> IsSMTP();
+		$this -> IsSMTP();
 
 		#servidor SMTP
-		$this -> _mail -> Host = $this -> _host;
+		$this -> Host = $this -> _host;
 
 		#habilita smtp autenticado
-		$this -> _mail -> SMTPAuth = true;
+		$this -> SMTPAuth = true;
 
 		#usuário deste servidor smtp. Aqui esta a solucao
-		$this -> _mail -> Username = $this -> _usuario; // usuário
-		$this -> _mail -> Password = $this -> _senha; // senha
+		$this -> Username = $this -> _usuario; // usuário
+		$this -> Password = $this -> _senha; // senha
 
 		#email utilizado para o envio, pode ser o mesmo de username
-		$this -> _mail -> From = $this -> _from; 
-		$this -> _mail -> FromName = $this -> _nome;
+		$this -> From = $this -> _from; 
+		$this -> FromName = $this -> _nome;
 		
 
-		$this -> _mail -> AddReplyTo($this -> _from, $this -> _nome);
+		$this -> AddReplyTo($this -> _from, $this -> _nome);
 
 		#Enderecos que devem receber a mensagem
-		$this -> _mail -> AddAddress($this -> _to);
+		$this -> AddAddress($this -> _to);
 
 
-		$this -> _mail -> IsHTML($this -> _html);
-		$this -> _mail -> Subject = $this -> _assunto;
+		$this -> IsHTML($this -> _html);
+		$this -> Subject = $this -> _assunto;
 
 		#adicionando o html no corpo do email
-		$this -> _mail -> Body = $corpo;
+		$this -> Body = $corpo;
 
 		#enviando e retornando o status de envio
-		return $this -> _mail -> Send();
+		return $this -> Send();
 	}
 
 
@@ -91,29 +89,29 @@ class EmailHelper
 	{
 		
 		#enviar via SMTP
-		$this -> _mail -> IsMail();
+		$this -> IsMail();
 
 		#email utilizado para o envio, pode ser o mesmo de username
-		$this -> _mail -> From = $this -> _from; 
-		$this -> _mail -> FromName = $this -> _nome;		
+		$this -> From = $this -> _from; 
+		$this -> FromName = $this -> _nome;		
 
 		#Endereço de email de resposta
-		$this -> _mail -> AddReplyTo($this -> _from, $this -> _nome);
+		$this -> AddReplyTo($this -> _from, $this -> _nome);
 
 		#Enderecos que devem receber a mensagem
-		$this -> _mail -> AddAddress($this -> _to);
+		$this -> AddAddress($this -> _to);
 
 		#Html ou texto
-		$this -> _mail -> IsHTML($this -> _html);
+		$this -> IsHTML($this -> _html);
 		
 		#assunto do email
-		$this -> _mail -> Subject = $this -> _assunto;
+		$this -> Subject = $this -> _assunto;
 
 		#adicionando o html no corpo do email
-		$this -> _mail -> Body = $corpo;
+		$this -> Body = $corpo;
 
 		#enviando e retornando o status de envio
-		return $this -> _mail -> Send();
+		return $this -> Send();
 	}
 }
 
