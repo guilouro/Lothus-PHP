@@ -1,9 +1,9 @@
-<div class="row espaco-topo">
+<div class="row">
 
 	
 	<? if(isset($status)): ?>
 
-		<div class="span12">
+		<div class="col-md-12">
 			<div class="alert <?= $alert ?> centro">
 		 	 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 		  		<?= $status ?>
@@ -15,24 +15,24 @@
 
 	<form method="post" action="<?= URL ?>contato" class="well span8">
 	  <div class="row">
-			<div class="span3">
+			<div class="col-md-3">
 				<label>Nome</label>
-				<input name="nome" type="text" class="span3" placeholder="Seu nome">
+				<input name="nome" type="text" class="form-control" placeholder="Seu nome">
 				<label>Email</label>
-				<input name="email" type="text" class="span3" placeholder="Seu email">
+				<input name="email" type="text" class="form-control" placeholder="Seu email">
 				<label>Assunto</label>
-				<input name="assunto" type="text" class="span3" placeholder="Assunto">
+				<input name="assunto" type="text" class="form-control" placeholder="Assunto">
 			</div>
-			<div class="span5">
+			<div class="col-md-5">
 				<label>Mensagem</label>
-				<textarea name="mensagem" id="message" class="input-xlarge span5" rows="8"></textarea>
+				<textarea name="mensagem" id="message" class="input-xlarge col-md-5" rows="8"></textarea>
 			</div>
 		
 			<button type="submit" class="btn btn-warning pull-right">Enviar</button>
 		</div>
 	</form>
 
-	<div class="well span3 pull-right">
+	<div class="well col-md-3 pull-right">
 		<strong>Lorem ipsum dolor sit. </strong><br/>
 		Lorem ipsum. <br/>
 		Tel.: (xx) xxxx-xxxx <br/>
