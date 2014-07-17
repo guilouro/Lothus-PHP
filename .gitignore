@@ -15,6 +15,21 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
+#############
+# MAC OS X
+#############
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
 
 #############
 ## Python
