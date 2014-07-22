@@ -40,11 +40,11 @@ class Manage:
 			self.table = self.name
 		self.define_path()
 
-
 	def define_path(self):
-		self.path_model = os.path.abspath('../app/Models/%s_Model.php' %self.name.capitalize())
-		self.path_controller = os.path.abspath('../app/Controllers/%sController.php' %self.name.lower())
-		self.path_view = os.path.abspath('../app/Views/%s/index.phtml' %self.name.capitalize())
+		os.chdir(os.path.dirname(os.path.abspath(__file__)))
+		self.path_model = os.path.abspath('../app/Models/%s_Model.php' %(self.name[0].upper() + self.name[1:]))
+		self.path_controller = os.path.abspath('../app/Controllers/%sController.php' %(self.name[0].lower() + self.name[1:]))
+		self.path_view = os.path.abspath('../app/Views/%s/index.phtml' %(self.name[0].upper() + self.name[1:]))
 
 	def create_file(self, archive, content):
 		with open(archive, 'w') as f:
@@ -58,7 +58,7 @@ class Manage:
 		self.create_view()
 
 	def create_controller(self):
-		self.create_file(self.path_controller, self.controller %self.name.lower())
+		self.create_file(self.path_controller, self.controller %(self.name[0].lower() + self.name[1:]))
 
 	def create_view(self):
 		pathv = self.path_view.replace('index.phtml', '')
