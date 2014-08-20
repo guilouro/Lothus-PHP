@@ -13,7 +13,7 @@ class Model
 	public function __construct() 
 	{
 		extract(DATABASE_CONFIG::$default);
-		$this -> db = new PDO("mysql:host=$host;dbname=$banco", "$login", "$senha");
+		$this -> db = new PDO("mysql:host=$host;dbname=$banco", "$login", "$senha", array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'));
 		if(!$this -> db) die('Erro ao conectar ao banco de dado');
 	}
 
