@@ -1,4 +1,5 @@
 <?php
+
 class TemplateParser extends System
 {
     private $output;
@@ -44,5 +45,3 @@ class TemplateParser extends System
         return $this->output;
     }
 }
-
-?>

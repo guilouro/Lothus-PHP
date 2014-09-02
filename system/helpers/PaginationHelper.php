@@ -1,4 +1,4 @@
-<?
+<?php
 
 
 class PaginationHelper
@@ -152,4 +152,3 @@ class PaginationHelper
 		return $str;
 	}
 }
-

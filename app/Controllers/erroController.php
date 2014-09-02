@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Erro extends Controller
 {
@@ -14,5 +14,3 @@ class Erro extends Controller
 	}
 
 }
-
-?>

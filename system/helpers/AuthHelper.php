@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
 * 
@@ -111,64 +111,4 @@ class AuthHelper
 		$this -> _bd -> _tabela = $this -> _tableName;
 		return $this -> _bd -> readLine($where);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-	public function codifica ( $string )
-	{
-		
-	  $cipher     = "rijndael-128";
-	  $mode       = "cbc";
-	  $plain_text = $string;
-	  $secret_key = "A#E%]Ru1,sDq";
-	  $iv         = "fedcba9876543210";
-
-	  $td = mcrypt_module_open($cipher, "", $mode, $iv);
-	  mcrypt_generic_init($td, $secret_key, $iv);
-	  $cyper_text = mcrypt_generic($td, $plain_text);
-	  
-	  //transforma o binario em hexadecimal
-	  return bin2hex($cyper_text);	
-	}
-
-	//funcao que transforma hexadecimal para binario
-	public function hex2bin( $hexdata )
-	{
-	  $bindata="";
-
-	  for ($i=0;$i<strlen($hexdata);$i+=2) {
-	   $bindata.=chr(hexdec(substr($hexdata,$i,2)));
-	  }
-
-	  return $bindata;
-	}
-
-	//funcao para decriptografar
-	public function decodifica ( $string )
-	{
-		$cipher     = "rijndael-128";
-		$mode       = "cbc";
-		$secret_key = "A#E%]Ru1,sDq";
-		$iv         = "fedcba9876543210";
-
-		$td = mcrypt_module_open($cipher, "", $mode, $iv);
-
-		mcrypt_generic_init($td, $secret_key, $iv);
-
-		return $valor_decodificado = trim(mdecrypt_generic($td, $this->hex2bin($string)));
-	}
-
-
 }
-
-?>

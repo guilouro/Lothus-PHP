@@ -1,4 +1,4 @@
-<?
+<?php
 
 class home extends Controller
 {
@@ -15,5 +15,3 @@ class home extends Controller
 	}
 
 }
-
-?>

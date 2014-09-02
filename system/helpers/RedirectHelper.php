@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
 * Class para redirecionamento
@@ -68,5 +68,3 @@ class RedirectHelper
 		return $params;
 	}
 }
-
-?>

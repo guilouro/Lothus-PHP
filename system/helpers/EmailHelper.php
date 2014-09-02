@@ -1,4 +1,4 @@
-<?
+<?php
 
 class EmailHelper extends PHPMailer
 {
@@ -114,5 +114,3 @@ class EmailHelper extends PHPMailer
 		return $this -> Send();
 	}
 }
-
-?>

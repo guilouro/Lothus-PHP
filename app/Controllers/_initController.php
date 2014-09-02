@@ -1,4 +1,4 @@
-<?
+<?php
 
 class _init extends Controller
 {
@@ -80,5 +80,3 @@ class _init extends Controller
 	}
 
 }
-
-?>

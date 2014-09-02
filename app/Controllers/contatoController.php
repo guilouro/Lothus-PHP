@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Contato extends Controller
 {
@@ -53,5 +53,3 @@ class Contato extends Controller
 	}
 
 }
-
-?>

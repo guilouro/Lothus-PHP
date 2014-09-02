@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Controller extends System
 {
@@ -38,5 +38,3 @@ class Controller extends System
 	public function init(){}
 
 }
-
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 
 	error_reporting(0);
 	session_start();
@@ -76,4 +76,3 @@
 	$start = new System;
 	$start->init();
 	$start->run();
-?>

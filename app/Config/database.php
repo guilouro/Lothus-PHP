@@ -1,4 +1,4 @@
-<?
+<?php
 
 class DATABASE_CONFIG 
 {
@@ -10,5 +10,3 @@ class DATABASE_CONFIG
 		'banco' => 'teste',
 	);
 }
-
-?>

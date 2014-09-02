@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
 * Classe para autenticação e verificação de area de cliente
@@ -63,6 +63,3 @@ class LoginHelper
 		}
 	}
 }
-
-
-?>

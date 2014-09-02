@@ -1,4 +1,4 @@
-<?
+<?php
 
 /*
  * Padrão TableData Gateway
@@ -356,5 +356,3 @@ class Model
 		echo "<hr/><pre>$sql</pre><hr/>";
 	}
 }
-
-?>

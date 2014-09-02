@@ -1,4 +1,4 @@
-<? 
+<?php 
 	global $start;
 	if(isset($dados)) extract($dados);
 ?>
@@ -15,15 +15,15 @@
 
 			<div class="widget-content">
 
-				<? if(isset($status)) echo "<div class='well well-large'><center>" . $status . "</center></div>"; ?>
+				<?php if(isset($status)) echo "<div class='well well-large'><center>" . $status . "</center></div>"; ?>
 
 			<!-- class="form-horizontal" -->
-			<form method="post" action="<?= URL . 'admin/' . $start->_action ?>/usuarios/<? if(isset($id)) echo $id; ?>" class="form-horizontal">
+			<form method="post" action="<?= URL . 'admin/' . $start->_action ?>/usuarios/<?php if(isset($id)) echo $id; ?>" class="form-horizontal">
 
 				<div class="control-group">
 					<label class="control-label" for="nome">Nome</label>
 					<div class="controls">
-						<input type="text" id="nome" name="nome" placeholder="Nome" value='<? if(isset($nome)) echo $nome; ?>'>
+						<input type="text" id="nome" name="nome" placeholder="Nome" value='<?php if(isset($nome)) echo $nome; ?>'>
 					</div>
 				</div>
 
@@ -31,7 +31,7 @@
 				<div class="control-group">
 					<label class="control-label" for="login">Login</label>
 					<div class="controls">
-						<input type="text" id="login" name="login" placeholder="login" value='<? if(isset($login)) echo $login; ?>'>
+						<input type="text" id="login" name="login" placeholder="login" value='<?php if(isset($login)) echo $login; ?>'>
 					</div>
 				</div>
 				

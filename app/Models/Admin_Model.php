@@ -1,4 +1,4 @@
-<?
+<?php
 	class Admin_Model extends Model
 	{
 		public $_tabela = 'developer';
@@ -18,5 +18,3 @@
 		);
 
 	}
-
-?>

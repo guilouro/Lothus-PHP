@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
 * 
@@ -213,5 +213,3 @@ class ImageHelper
 		return md5(uniqid(time())).$string;	
 	}
 }
-
-?>
