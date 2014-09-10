@@ -9,7 +9,7 @@ class Manage:
 
 	name_view = 'index2.phtml'
 
-	controller = '''<?
+	controller = '''<?php
 	class %s extends Controller
 	{
 		public function init($params = null)
@@ -23,7 +23,7 @@ class Manage:
 		}
 	}'''
 	
-	model = '''<?
+	model = '''<?php
 	class %s_Model extends Model
 	{
 		public $_tabela = '%s';
