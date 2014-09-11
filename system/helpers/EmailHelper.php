@@ -6,7 +6,7 @@ class EmailHelper extends PHPMailer
 	private $_mail	  = "";
 	
 	#Host
-	private $_rost	  = "";
+	private $_host	  = "";
 
 	#Email HTML
 	private $_html	  = true;
