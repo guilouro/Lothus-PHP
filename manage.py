@@ -100,10 +100,10 @@ if __name__ == '__main__':
 		m = Manage(sys.argv)
 		if '-c' in sys.argv:
 			m.create_controller()
-		elif '-v' in sys.argv:
+		if '-v' in sys.argv:
 			m.create_view()
-		elif '-m' in sys.argv:
+		if '-m' in sys.argv:
 			m.create_model()
-		else:
+		if not '-c' in sys.argv and not '-v' in sys.argv and not '-m' in sys.argv:
 			m.create_all()
 		print "\n\n"
