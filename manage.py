@@ -42,9 +42,9 @@ class Manage:
 
 	def define_path(self):
 		os.chdir(os.path.dirname(os.path.abspath(__file__)))
-		self.path_model = os.path.abspath('../app/Models/%s_Model.php' %(self.name[0].upper() + self.name[1:]))
-		self.path_controller = os.path.abspath('../app/Controllers/%sController.php' %(self.name[0].lower() + self.name[1:]))
-		self.path_view = os.path.abspath('../app/Views/%s/index.phtml' %(self.name[0].upper() + self.name[1:]))
+		self.path_model = os.path.abspath('app/Models/%s_Model.php' %(self.name[0].upper() + self.name[1:]))
+		self.path_controller = os.path.abspath('app/Controllers/%sController.php' %(self.name[0].lower() + self.name[1:]))
+		self.path_view = os.path.abspath('app/Views/%s/index.phtml' %(self.name[0].upper() + self.name[1:]))
 
 	def create_file(self, archive, content):
 		with open(archive, 'w') as f:
