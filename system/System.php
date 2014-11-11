@@ -1,4 +1,4 @@
-<?php
+<?
 
 	/**
 	* 
@@ -6,7 +6,7 @@
 	class System extends Config
 	{
 		
-		private $_url;
+		public $_url;
 		private $_explode;
 		public  $_controller;
 		public  $_action;
@@ -35,18 +35,29 @@
 			$this->_explode = explode("/", $this->_url);
 		}
 
+		private function setSlug($w)
+		{
+			$arr = explode("-", $w);
+			for ($i=1; $i < count($arr); $i++) { 
+				$arr[$i] = ucfirst($arr[$i]);
+			}
+
+			$slug = implode("", $arr);
+			return $slug;
+		}
 
 		private function setController()
 		{
-			//Defino qual controller a ser usado
-			$this->_controller = $this->_explode[0];
+			//Defino qual controller a ser usado 
+			$this->_controller = $this -> setSlug($this -> _explode[0]);
 		}
 
 
 		private function setAction()
 		{
 			//defino a action que será usada 
-			$this->_action = (!isset($this->_explode[1]) || $this->_explode[1] == null || $this->_explode[1] == 'index' ? 'index_action' : $this->_explode[1] );
+			$this->_action = $this -> setSlug(!isset($this->_explode[1]) || $this->_explode[1] == null || $this->_explode[1] == 'index' ? 'index_action' : $this->_explode[1] );
+			
 		}
 
 
@@ -127,3 +138,5 @@
 		}
 
 	}
+
+?>

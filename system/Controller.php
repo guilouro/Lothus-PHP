@@ -15,6 +15,12 @@ class Controller extends System
 		$tp = new TemplateParser(LAYOUT . $this->_layout . ".phtml");
 
 		//verifica qual a pasta que estará a view
+		$act = explode("-", current(explode("/", (isset($_GET['url']) ? $_GET['url']  : $this->_Index."/index_action" ))));
+
+		foreach ($act as $key => $value)
+			$act[$key] = ucfirst($value);
+
+		//verifica qual a pasta que estará a view
 		$pasta = ucfirst(current(explode("/", (isset($_GET['url']) ? $_GET['url']  : $this->_Index."/index_action" ))));
 
 		ob_start();
