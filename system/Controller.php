@@ -21,7 +21,7 @@ class Controller extends System
 			$act[$key] = ucfirst($value);
 
 		//verifica qual a pasta que estará a view
-		$pasta = ucfirst(current(explode("/", (isset($_GET['url']) ? $_GET['url']  : $this->_Index."/index_action" ))));
+		$pasta = implode("", $act);
 
 		ob_start();
         include(VIEWS . "$pasta/$nome_pagina.phtml");
