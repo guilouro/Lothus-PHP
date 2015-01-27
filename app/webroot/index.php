@@ -35,7 +35,7 @@
 	define('IMG', URL . "img/");
 	define('JS', URL . "js/");
 	define('CSS', URL . "css/");
-	
+	define('FULL_URL', "http://" . $_SERVER['SERVER_NAME'] . URL);
 
 
 	define( 'LIB', '../../app/Lib/' );
