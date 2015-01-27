@@ -4,15 +4,15 @@ class EmailHelper extends PHPMailer
 {
 	#PHPMail
 	private $_mail	  = "";
-	
+
 	#Host
 	private $_host	  = "";
 
 	#Email HTML
 	private $_html	  = true;
 
-	#nome que aparecerá no envio 
-	private $_nome	  = ""; 
+	#nome que aparecerá no envio
+	private $_nome	  = "";
 
 	#email cadastrado para envio
 	private $_from	  = "";
@@ -35,20 +35,20 @@ class EmailHelper extends PHPMailer
 	//GETTER AND SETTER
 	public function __set($atrib, $value){  $this->$atrib = $value; }
 	public function __get($atrib){ return $value; }
-	
 
 
-	public function __construct() 
+
+	public function __construct()
 	{
 
 		#seta a linguagem
 		$this-> SetLanguage("br", HELPERS . "/Email/language/");
 	}
-	
-	
+
+
 	public function enviarAutenticado($corpo)
 	{
-		
+
 
 		#enviar via SMTP
 		$this -> IsSMTP();
@@ -64,9 +64,9 @@ class EmailHelper extends PHPMailer
 		$this -> Password = $this -> _senha; // senha
 
 		#email utilizado para o envio, pode ser o mesmo de username
-		$this -> From = $this -> _from; 
+		$this -> From = $this -> _from;
 		$this -> FromName = $this -> _nome;
-		
+
 
 		$this -> AddReplyTo($this -> _from, $this -> _nome);
 
@@ -87,13 +87,13 @@ class EmailHelper extends PHPMailer
 
 	public function enviar($corpo)
 	{
-		
+
 		#enviar via SMTP
 		$this -> IsMail();
 
 		#email utilizado para o envio, pode ser o mesmo de username
-		$this -> From = $this -> _from; 
-		$this -> FromName = $this -> _nome;		
+		$this -> From = $this -> _from;
+		$this -> FromName = $this -> _nome;
 
 		#Endereço de email de resposta
 		$this -> AddReplyTo($this -> _from, $this -> _nome);
@@ -103,7 +103,7 @@ class EmailHelper extends PHPMailer
 
 		#Html ou texto
 		$this -> IsHTML($this -> _html);
-		
+
 		#assunto do email
 		$this -> Subject = $this -> _assunto;
 
@@ -113,4 +113,16 @@ class EmailHelper extends PHPMailer
 		#enviando e retornando o status de envio
 		return $this -> Send();
 	}
+
+    /**
+     * [Mailcatcher description]
+     * Teste de envio via localhost
+     * Precisa ter o mailcatcher instalado na máquina
+     */
+    public function Mailcatcher()
+    {
+        $this -> Mailer = "smtp";
+        $this -> Host = "localhost";
+        $this -> Port = "1025";
+    }
 }
