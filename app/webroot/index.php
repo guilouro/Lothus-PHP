@@ -8,24 +8,28 @@
 	 */
 	date_default_timezone_set("Brazil/East");
 
-
+    if (get_magic_quotes_gpc()) {
+        function magicQuotes_awStripslashes(&$value, $key) {$value = stripslashes($value);}
+        $gpc = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
+        array_walk_recursive($gpc, 'magicQuotes_awStripslashes');
+    }
 
 	/*
 	 * Define DS como o separador de diretorios (/) para usar em outros locais
 	 */
-	if (!defined('DS')) 
+	if (!defined('DS'))
 		define('DS', DIRECTORY_SEPARATOR);
 
 	/**
 	 * Define um caminho completo da aplicacao
 	 */
-	if (!defined('ROOT')) 
+	if (!defined('ROOT'))
 		define('ROOT', dirname(dirname(dirname(__FILE__))));
-	
+
 	/**
 	 * Define o diretorio atual da aplicação
 	 */
-	if (!defined('APP_DIR')) 
+	if (!defined('APP_DIR'))
 		define('APP_DIR', basename(dirname(dirname(__FILE__))));
 
 
@@ -47,7 +51,7 @@
 	define( 'HELPERS', '../../system/helpers/' );
 	define( 'SYSTEM', '../../system/' );
 	define( 'CONFIG', '../../app/Config/' );
-	
+
 	require_once('../../system/System.php');
 	require_once('../../system/Controller.php');
 	require_once('../../system/Model.php');
