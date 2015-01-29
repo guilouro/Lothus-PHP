@@ -16,7 +16,7 @@
   <link href="<?= URL ?>css/adm/adm-style-responsive.css" rel="stylesheet" type="text/css">
 
   <script src="http://code.jquery.com/jquery.js"></script>
-  
+
 
   <!-- IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -79,40 +79,40 @@
 
 
 
-        
-              
+
+
               <!-- CONTATOS -->
-  
+
               <li>
                 <a href="<?= URL ?>admin/lista/contato">
                   <i class="icon-envelope-alt"></i>
                   <span>Contatos</span>
                 </a>
               </li>
-              
+
               <!-- FIM CONTATOS -->
 
 
-              
+
               <!-- USUÁRIOS - DROPDOWN -->
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="icon-user"></i>
                   <span>Usuários</span>
                   <b class="caret"></b>
-                </a>  
-              
+                </a>
+
                 <ul class="dropdown-menu">
                   <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li>
                   <li><a href="<?= URL ?>admin/lista/usuarios"><i class="icon-list"></i> Listar</a></li>
-                </ul>           
-              </li> 
+                </ul>
+              </li>
               <!-- FIM USUÁRIOS - DROPDOWN -->
 
 
 
 
-            </ul> <!-- mainnav -->     
+            </ul> <!-- mainnav -->
           </div> <!-- container -->
         </div> <!-- subnavbar-inner -->
       </div> <!-- subnavbar -->
@@ -141,11 +141,11 @@
       <div id="push"></div> <!-- EMPURRA RODAPÉ PARA BAIXO -->
       </div> <!-- WRAPPER RODAPÉ -->
       <div class="rodape">
-        
+
         <div class="rodape-inner">
-          
+
           <div class="container">
-            
+
             <div class="row">
 
               <div class="logo-rodape">
@@ -155,9 +155,9 @@
             </div> <!-- /row -->
 
           </div> <!-- /container -->
-          
+
         </div> <!-- /rodape-inner -->
-        
+
       </div> <!-- /rodape -->
 
 
@@ -176,14 +176,16 @@
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste"
+            "insertdatetime media table contextmenu paste jbimages"
         ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link unlink | fullscreen image preview | code"
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link unlink image jbimages | fullscreen image preview | code",
+
+        relative_urls: false
   });
 
 
   // Função para perguntar sobre exclusão de item
-  function del (id) 
+  function del (id)
   {
     if(confirm('Tem certeza que deseja excluir?'))
       window.location.href = $("#" + id).attr("data");
