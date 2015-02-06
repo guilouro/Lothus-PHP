@@ -14,7 +14,7 @@ class Manage:
 	{
 		public function init($params = null)
 		{
-			
+
 		}
 
 		public function index_action($params = null)
@@ -22,7 +22,7 @@ class Manage:
 			$this->view('index');
 		}
 	}'''
-	
+
 	model = '''<?php
 	class %s_Model extends Model
 	{
@@ -72,7 +72,7 @@ class Manage:
 		self.create_file(self.path_view, self.view %self.name.capitalize())
 
 	def create_model(self):
-		self.create_file(self.path_model, self.model %(self.name.capitalize(), self.table))
+		self.create_file(self.path_model, self.model %(self.name[0].upper(), self.table))
 
 
 
