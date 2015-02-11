@@ -72,7 +72,7 @@ class Manage:
 		self.create_file(self.path_view, self.view %self.name.capitalize())
 
 	def create_model(self):
-		self.create_file(self.path_model, self.model %(self.name[0].upper(), self.table))
+		self.create_file(self.path_model, self.model %(self.name[0].upper() + self.name[1:], self.table))
 
 
 
