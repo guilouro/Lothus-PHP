@@ -6,7 +6,7 @@
 class RedirectHelper
 {
 	protected $parameters = array();
-	
+
 	protected function go( $data )
 	{
 		header("Location: " . URL . $data);
@@ -60,11 +60,29 @@ class RedirectHelper
 		else
 			$arr = $this -> parameters;
 
-		foreach ($arr as $p) 
+		foreach ($arr as $p)
 		{
 			$params .= $p . "/";
 		}
 
 		return $params;
 	}
+
+    public static function controller( $controller )
+    {
+        $redir = New RedirectHelper();
+        $redir->goToController($controller);
+    }
+
+    public static function action( $action )
+    {
+        $redir = New RedirectHelper();
+        $redir->goToAction($action);
+    }
+
+    public static function controllerAction( $controller, $action )
+    {
+        $redir = New RedirectHelper();
+        $redir->goToControllerAction($controller, $action);
+    }
 }
