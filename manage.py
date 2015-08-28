@@ -49,8 +49,8 @@ class Manage:
 	def create_file(self, archive, content):
 		with open(archive, 'w') as f:
 			f.write(content)
-			print "\033[33m%s\033[0;0m\tCriado com sucesso" %f.name
-			print "-"*100
+			print("\033[33m{0}\033[0;0m\tCriado com sucesso".format(f.name))
+			print("-"*100)
 
 	def create_all(self):
 		self.create_controller()
@@ -93,10 +93,10 @@ if __name__ == '__main__':
 		return x in ['-c','-v','-m']
 
 	if not '-name' in sys.argv or len(sys.argv[1:]) < 2 or '-help' in sys.argv:
-		print help
+		print(help)
 
 	else:
-		print "\n\n"
+		print("\n\n")
 		m = Manage(sys.argv)
 		if '-c' in sys.argv:
 			m.create_controller()
@@ -106,4 +106,4 @@ if __name__ == '__main__':
 			m.create_model()
 		if not '-c' in sys.argv and not '-v' in sys.argv and not '-m' in sys.argv:
 			m.create_all()
-		print "\n\n"
+		print("\n\n")
