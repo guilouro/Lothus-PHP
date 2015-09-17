@@ -10,7 +10,7 @@ class Model
 	public    $_tabela;
 	public    $_fk;
 
-	public function __construct() 
+	public function __construct()
 	{
 		extract(DATABASE_CONFIG::$default);
 		$this -> db = new PDO("mysql:host=$host;dbname=$banco", "$login", "$senha", array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'));
@@ -56,11 +56,11 @@ class Model
 		}
 
 		//TENTA INSERIR OS DADOS
-		try 
+		try
 		{
 			//PREPARA OS DADOS PARA INSERT USANDO PREPARED STATEMENTS
 			$ps = $this -> db -> prepare("INSERT INTO `{$this->_tabela}` ({$campos}) values ({$valores})");
-			
+
 			//PASSA OS VALORES CORRETOS BASEADOS NO PARAMETROS DA STRING
 			foreach ($dadosBD as $key => $value){
 			 	$ps->bindValue(":$key", $value);
@@ -125,10 +125,10 @@ class Model
 	{
 		$where    = ($where   != null ? "WHERE {$where}"      : "");
 
-		
+
 		if($debug)
 	 		$this -> debug("SELECT * FROM `{$this->_tabela}` {$where}");
-	 	
+
 
 	 	$query = $this -> db -> prepare("SELECT * FROM `{$this->_tabela}` {$where}");
 	 	$query -> execute();
@@ -175,11 +175,11 @@ class Model
 		}
 
 
-		try 
+		try
 		{
 			//PREPARA OS DADOS PARA INSERT USANDO PREPARED STATEMENTS
 			$ps = $this -> db -> prepare("UPDATE `{$this->_tabela}` SET {$campos} WHERE {$where}");
-			
+
 			//PASSA OS VALORES CORRETOS BASEADOS NO PARAMETROS DA STRING
 			foreach ($dadosBD as $key => $value){
 			 	$ps->bindValue(":$key", $value);
@@ -209,7 +209,7 @@ class Model
 	 **/
 	public function delete( $where )
 	{
-		try 
+		try
 		{
 			$ps = $this -> db -> prepare("DELETE FROM `{$this->_tabela}` WHERE {$where} ");
 			$executa = $ps -> execute();
@@ -259,7 +259,7 @@ class Model
 	public function consulta($sql, $debug = FALSE)
 	{
 		if($debug) $this -> debug($sql);
-		return $this -> db -> query($sql) -> fetchAll();
+		return $this -> db -> query($sql) -> fetchAll(PDO::FETCH_ASSOC);
 	}
 
 
@@ -283,7 +283,7 @@ class Model
 		$query = $this -> db -> prepare($sql);
 		$query -> execute();
 
-		return $query -> fetch();
+		return $query -> fetch(PDO::FETCH_ASSOC);
 	}
 
 
@@ -330,7 +330,7 @@ class Model
 	 **/
 	public function populateFK()
 	{
-		foreach ($this -> fk as $key => $value) 
+		foreach ($this -> fk as $key => $value)
 		{
 			$order = (isset($this -> orderby[$key])) ? "ORDER BY " . $this -> orderby[$key] : "";
 			$dados[$key] = $this -> consulta("SELECT * FROM `{$key}` {$order}");
