@@ -12,7 +12,13 @@ class Model
 
 	public function __construct()
 	{
-		extract(DATABASE_CONFIG::$default);
+		if( in_array( $_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1' ) ) ) {
+            $database = DATABASE_CONFIG::$staging;
+        } else {
+            $database = DATABASE_CONFIG::$production;
+        }
+
+        extract($database);
 		$this -> db = new PDO("mysql:host=$host;dbname=$banco", "$login", "$senha", array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'));
 		if(!$this -> db) die('Erro ao conectar ao banco de dado');
 	}

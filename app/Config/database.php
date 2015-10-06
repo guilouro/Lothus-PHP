@@ -1,12 +1,22 @@
 <?php
 
-class DATABASE_CONFIG 
+class DATABASE_CONFIG
 {
 
-	public static $default = array(
-		'host' => 'localhost',
-		'login' => 'root',
-		'senha' => '',
-		'banco' => 'teste',
-	);
+    # local database
+    public static $staging = array(
+        'host' => 'localhost',
+        'login' => 'root',
+        'senha' => '',
+        'banco' => 'teste',
+    );
+
+
+    # production database
+    public static $production = array(
+        'host' => 'localhost',
+        'login' => 'root',
+        'senha' => '',
+        'banco' => 'teste',
+    );
 }

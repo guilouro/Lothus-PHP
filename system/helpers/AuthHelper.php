@@ -1,7 +1,7 @@
 <?php
 
 /**
-* 
+*
 */
 class AuthHelper
 {
@@ -22,21 +22,27 @@ class AuthHelper
 	//GETTER AND SETTER
 	public function __set($atrib, $value){  $this->$atrib = $value; }
 	public function __get($atrib){  return $this->$atrib; }
-	
-	
 
 
 
-	function __construct() 
+
+
+	function __construct()
 	{
 		//CRIA O OBJETO QUE AUXILIA O REDIRECIONAMENTO
 		$this->_redir = new RedirectHelper();
 
 		//INICIO O MODELO DO BANCO
 		$this -> _bd = new Model();
+
+        if( in_array( $_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1' ) ) ) {
+            $this->database = DATABASE_CONFIG::$staging;
+        } else {
+            $this->database = DATABASE_CONFIG::$production;
+        }
 	}
 
-		
+
 
 
 	/*
@@ -48,7 +54,7 @@ class AuthHelper
 
 		//PASSO A TABELA QUE ESTÁ OS DADOS PARA LOGIN
 		$this -> _bd->_tabela = $this->_tableName;
-		
+
 		//DEFINO A STRING DE COMPARAÇÃO
 		$where = $this->_userColumn . " = '" . $this->_user . "' AND " . $this->_senhaColumn . " = '" . hash('sha512', $this->_senha) . "'";
 
@@ -61,21 +67,21 @@ class AuthHelper
 			$_SESSION['user'] = $sql[$this->_userColumn];
 			$_SESSION['dados_usuario'] = $sql;
 			$_SESSION['logado'] = 1;
-			$_SESSION['hash'] = sha1(DATABASE_CONFIG::$default['banco']);
+			$_SESSION['hash'] = sha1($this->database['banco']);
 
 			return true;
 		}
 		else //SE NÃO EXISTIR REDIRECIONA PARA A PAGINA DE LOGIN NOVAMENTE
 		{
 			return false;
-		}		
+		}
 	}
 
 
 
 	public function logout()
 	{
-		$_SESSION = array(); 			 
+		$_SESSION = array();
 		// Destroi a Sessão
 		session_destroy();
 		// Modifica o ID da Sessão
@@ -87,9 +93,9 @@ class AuthHelper
 
 	public function verificaLogin()
 	{
-		
+
 		//exit();
-		if(isset($_SESSION['user']) AND isset($_SESSION['dados_usuario']) AND $_SESSION['logado'] == 1 AND $_SESSION['hash'] == sha1(DATABASE_CONFIG::$default['banco']))
+		if(isset($_SESSION['user']) AND isset($_SESSION['dados_usuario']) AND $_SESSION['logado'] == 1 AND $_SESSION['hash'] == sha1($this->database['banco']))
 		{
 			return $this -> permissaoArea();
 		}
