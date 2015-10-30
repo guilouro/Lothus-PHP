@@ -168,6 +168,8 @@
 <script src="<?= URL ?>js/bootstrap.min.js"></script>
 <script src="<?= URL ?>js/bootstrap-fileupload.min.js"></script>
 <script src="<?= URL ?>js/tinymce/tinymce.min.js"></script>
+<script src="<?= URL ?>js/jquery.maskedinput.js"></script>
+<script src="<?= URL ?>js/datatables.min.js"></script>
 
 <script type="text/javascript">
 
@@ -183,6 +185,29 @@
 
         relative_urls: false
   });
+
+  $('.data-table').DataTable({
+        language: {
+            search:         "Buscar:",
+            lengthMenu:    "Exibir _MENU_ itens",
+            info:           "Exibindo _START_ de _TOTAL_ itens",
+            zeroRecords:    "Nenhum item encontrado",
+            emptyTable:    "Nenhum item encontrado",
+            paginate: {
+                first:      "Primeira",
+                previous:   "Anterior",
+                next:       "Próxima",
+                last:       "Última"
+            },
+        }
+    });
+
+
+
+  $(".cep").mask("99999-999");
+  $(".cnpj").mask("99.999.999/9999-99");
+  $("input[name*=telefone]").mask("(99) 9999-9999");
+  $("input[name*=celular]").mask("(99) 99999-9999");
 
 
   // Função para perguntar sobre exclusão de item
