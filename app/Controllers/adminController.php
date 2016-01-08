@@ -109,13 +109,16 @@ class admin extends Controller
 			//PEGO O NOME DA CHAVE DO ARRAY $_FILES
 			$key = array_keys($_FILES);
 			
-			//SE NÃO OCORRER NENHUM ERRO ELE FAZ O UPLOAD
-			if(!($_FILES[$key[0]]['error']))
+			for ($i=0; $i < count($key); $i++)
 			{
-				//CRIO O OBJETO DEFININDO O NOME DA PASTA
-				$upload = new ImageHelper( FILES );
-				//FAZ O UPLOAD E RETORNA O NOME DO ARQUIVO INSERINDO NO ARRAY $_POST PARA UPLOAD
-				$_POST[$key[0]] = $upload -> ResizeByUpload( $_FILES[ $key[0] ]);
+				//SE NÃO OCORRER NENHUM ERRO ELE FAZ O UPLOAD
+				if(!($_FILES[$key[$i]]['error']))
+				{
+					//CRIO O OBJETO DEFININDO O NOME DA PASTA
+					$upload = new ImageHelper( FILES );
+					//FAZ O UPLOAD E RETORNA O NOME DO ARQUIVO INSERINDO NO ARRAY $_POST PARA UPLOAD
+					$_POST[$key[$i]] = $upload -> ResizeByUpload( $_FILES[ $key[$i] ]);
+				}
 			}
 		}
 
@@ -157,18 +160,21 @@ class admin extends Controller
 		{
 			//PEGO O NOME DA CHAVE DO ARRAY $_FILES
 			$key = array_keys($_FILES);
-			
-			//SE NÃO OCORRER NENHUM ERRO ELE FAZ O UPLOAD
-			if(!($_FILES[$key[0]]['error']))
-			{
-				//EXCLUI O ARQUIVO ALTERADO
-				$imagem = $this -> bd -> readLine($where);
-				unlink( FILES . $imagem[$key[0]]);
 
-				//CRIO O OBJETO DEFININDO O NOME DA PASTA
-				$upload = new ImageHelper( FILES );
-				//FAZ O UPLOAD E RETORNA O NOME DO ARQUIVO INSERINDO NO ARRAY $_POST PARA UPLOAD
-				$_POST[$key[0]] = $upload -> ResizeByUpload( $_FILES[ $key[0] ]);
+			for ($i=0; $i < count($key); $i++)
+			{
+				//SE NÃO OCORRER NENHUM ERRO ELE FAZ O UPLOAD
+				if(!($_FILES[$key[$i]]['error']))
+				{
+					//EXCLUI O ARQUIVO ALTERADO
+					$imagem = $this -> bd -> readLine($where);
+					unlink( FILES . $imagem[$key[0]]);
+
+					//CRIO O OBJETO DEFININDO O NOME DA PASTA
+					$upload = new ImageHelper( FILES );
+					//FAZ O UPLOAD E RETORNA O NOME DO ARQUIVO INSERINDO NO ARRAY $_POST PARA UPLOAD
+					$_POST[$key[$i]] = $upload -> ResizeByUpload( $_FILES[ $key[$i] ]);
+				}
 			}
 		}
 		
