@@ -168,7 +168,7 @@ class admin extends Controller
 				{
 					//EXCLUI O ARQUIVO ALTERADO
 					$imagem = $this -> bd -> readLine($where);
-					unlink( FILES . $imagem[$key[0]]);
+					unlink( FILES . $imagem[$key[$i]]);
 
 					//CRIO O OBJETO DEFININDO O NOME DA PASTA
 					$upload = new ImageHelper( FILES );
