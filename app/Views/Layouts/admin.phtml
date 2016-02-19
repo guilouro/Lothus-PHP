@@ -5,18 +5,11 @@
   <title>Administração</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="<?= URL ?>css/adm/adm-bootstrap.min.css">
-  <link rel="stylesheet" href="<?= URL ?>css/adm/adm-bootstrap-fileupload.min.css">
-  <link rel="stylesheet" href="<?= URL ?>css/adm/adm-bootstrap-responsive.min.css">
   <link rel="stylesheet" href="<?= URL ?>css/adm/font-awesome.min.css">
   <link rel="stylesheet" href="<?= URL ?>css/adm/datatables.min.css">
+  <link rel="stylesheet" href="<?= URL ?>css/adm/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-
-  <link href="<?= URL ?>css/adm/adm-style.css" rel="stylesheet" media="screen">
-  <link href="<?= URL ?>css/adm/adm-style-responsive.css" rel="stylesheet" type="text/css">
-
-  <script src="http://code.jquery.com/jquery.js"></script>
 
 
   <!-- IE6-8 support of HTML5 elements -->
@@ -27,149 +20,84 @@
 </head>
 
   <body>
-    <div id="wrap"> <!-- TÉCNICA RODAPÉ FIXO -->
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
+    
+    <div class="menu-lateral">
+      <div class="row segura-logo">
+        <div class="logo">
+          <div class="logo__img">
+            <img src="<?= IMG ?>logo.png" alt="">
+          </div> 
+          <div class="logo__texto">
+            teste
+          </div>
+        </div>
+      </div>
+      
+      <div class="row segura-user">
+        <div class="user">
+          <div class="user__img">
+            <img src="<?= IMG ?>face.png" alt="">
+          </div>
 
-            <a class="btn btn-navbar menu" data-toggle="collapse" data-target=".nav-collapse">
-              <span>Menu</span>
-            </a>
+          <div class="user__nome">
+            <?= $_SESSION['user']?>
+          </div>
+        </div>
+      </div>
 
+      <ul class="lista">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-user"></i>
+            <span>Usuários</span>
+            <b class="caret"></b>
+          </a>
 
-            <a class="brand" href="<?= URL ?>admin">
-              Administração
-            </a>
+          <ul class="dropdown-menu sublista">
+            <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li>
+            <li><a href="<?= URL ?>admin/lista/usuarios"><i class="icon-list"></i> Listar</a></li>
+          </ul>
+        </li>
 
-            <div class="nav-collapse">
-              <ul class="nav pull-right">
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="icon-user"></i>
+            <span>Usuários</span>
+            <b class="caret"></b>
+          </a>
 
-                <li class="dropdown"> <!-- Bloco Dropdown -->
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="icon-user"></i>
-                    <span><?= $_SESSION['dados_usuario']['nome'] ?></span>
-                    <b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="<?= URL?>admin/logout"><i class="icon-off"></i> Sair</a></li>
-                  </ul>
-                </li> <!-- Fim bloco dropdown -->
+          <ul class="dropdown-menu sublista">
+            <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li>
+            <li><a href="<?= URL ?>admin/lista/usuarios"><i class="icon-list"></i> Listar</a></li>
+          </ul>
+        </li>
 
-              </ul>
+      </ul>
 
-            </div> <!-- navbar-collapse -->
-          </div> <!-- container -->
-        </div> <!-- navbar-inner -->
-      </div> <!-- navbar -->
-
-      <div class="subnavbar">
-        <div class="subnavbar-inner">
-          <div class="container">
-
-            <ul class="mainnav">
-
-
-              <!-- HOME -->
-              <li class="ativo">
-                <a href="<?= URL ?>admin">
-                  <i class="icon-home"></i>
-                  <span>Home</span>
-                </a>
-              </li>
-              <!-- FIM HOME -->
-
-
-
-
-
-              <!-- CONTATOS -->
-
-              <li>
-                <a href="<?= URL ?>admin/lista/contato">
-                  <i class="icon-envelope-alt"></i>
-                  <span>Contatos</span>
-                </a>
-              </li>
-
-              <!-- FIM CONTATOS -->
+    </div>
 
 
 
-              <!-- USUÁRIOS - DROPDOWN -->
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="icon-user"></i>
-                  <span>Usuários</span>
-                  <b class="caret"></b>
-                </a>
-
-                <ul class="dropdown-menu">
-                  <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li>
-                  <li><a href="<?= URL ?>admin/lista/usuarios"><i class="icon-list"></i> Listar</a></li>
-                </ul>
-              </li>
-              <!-- FIM USUÁRIOS - DROPDOWN -->
-
-
-
-
-            </ul> <!-- mainnav -->
-          </div> <!-- container -->
-        </div> <!-- subnavbar-inner -->
-      </div> <!-- subnavbar -->
-
-
-
-
-      <div class="main">
-        <div class="main-inner">
-          <div class="container">
-
-
-            {conteudo}
-
-
-          </div> <!-- container -->
-        </div> <!-- main-inner -->
-      </div> <!-- main -->
-
-
-
-
-
-
-
-      <div id="push"></div> <!-- EMPURRA RODAPÉ PARA BAIXO -->
-      </div> <!-- WRAPPER RODAPÉ -->
-      <div class="rodape">
-
-        <div class="rodape-inner">
-
-          <div class="container">
-
-            <div class="row">
-
-              <div class="logo-rodape">
-                <a href="#" target="_blank"></a>
-              </div> <!-- /span12 -->
-
-            </div> <!-- /row -->
-
-          </div> <!-- /container -->
-
-        </div> <!-- /rodape-inner -->
-
-      </div> <!-- /rodape -->
-
+    <div class="conteudo">
+      
+    </div>
+    
+  </body>
+    
 
 <!-- Sessão de Javascript no final para loadar mais rápido -->
 
 
-<script src="<?= URL ?>js/bootstrap.min.js"></script>
-<script src="<?= URL ?>js/bootstrap-fileupload.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="<?= URL ?>js/tinymce/tinymce.min.js"></script>
 <script src="<?= URL ?>js/jquery.maskedinput.js"></script>
 <script src="<?= URL ?>js/datatables.min.js"></script>
+
+<script type='text/javascript' id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.11.1.js'><\/script>".replace("HOST", location.hostname));
+    </script>
+//]]></script>
 
 <script type="text/javascript">
 

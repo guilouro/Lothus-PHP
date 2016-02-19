@@ -1,0 +1,43 @@
+/*********************
+ * BREAKPOINTS
+ *********************/
+
+$mobile = em(567px)
+$tablet = 50em
+$laptop = 64em
+$desktop = 70em
+
+breakpoint($point, $tam = min)
+    if $tam == middle
+        if $point == laptop
+            @media (min-width: $laptop) and (max-width: $desktop)
+                {block}
+
+        else if $point == tablet
+            @media (min-width: $tablet) and (max-width: $laptop)
+                {block}
+
+        else if $point == mobile
+            @media (min-width: $mobile) and (max-width: $tablet)
+                {block}
+
+    else
+        if $point == desktop
+            @media ({$tam}-width: $desktop)
+                {block}
+
+        else if $point == laptop
+            @media ({$tam}-width: $laptop)
+                {block}
+
+        else if $point == tablet
+            @media ({$tam}-width: $tablet)
+                {block}
+
+        else if $point == phablet
+            @media ({$tam}-width: $phablet)
+                {block}
+
+        else if $point == mobile
+            @media (max-width: $mobile)
+                {block}
