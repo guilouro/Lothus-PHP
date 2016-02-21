@@ -4141,10 +4141,7 @@ body {
 }
 .menu-lateral .segura-logo {
   border-bottom: 1px solid #fff;
-  padding-bottom: 35px;
-}
-.menu-lateral .segura-logo .logo {
-  padding: 20px 0;
+  padding: 10px;
 }
 .menu-lateral .segura-logo .logo__img {
   margin-left: 30px;
@@ -4155,10 +4152,7 @@ body {
 }
 .segura-user {
   border-bottom: 1px solid #fff;
-  padding-bottom: 35px;
-}
-.segura-user .user {
-  margin: 20px 0;
+  padding: 10px 0;
 }
 .segura-user .user a {
   color: #fff;
