@@ -3,57 +3,30 @@
 	if(isset($dados)) extract($dados);
 ?>
 
+<div class="titulo">
+	<h1><?= $action ?> Usuários</h1>
+</div>
 
-<div class="row">
-	<div class="span6 offset3 form_edit"> 
-
-		<div class="widget">
-			<div class="widget-header">
-				<i class="icon-lock"></i>
-				<h3>Usuário</h3>
-			</div> <!-- /widget-header -->
-
-			<div class="widget-content">
-
-				<?php if(isset($status)) echo "<div class='well well-large'><center>" . $status . "</center></div>"; ?>
-
-			<!-- class="form-horizontal" -->
-			<form method="post" action="<?= URL . 'admin/' . $start->_action ?>/usuarios/<?php if(isset($id)) echo $id; ?>" class="form-horizontal">
-
-				<div class="control-group">
-					<label class="control-label" for="nome">Nome</label>
-					<div class="controls">
-						<input type="text" id="nome" name="nome" placeholder="Nome" value='<?php if(isset($nome)) echo $nome; ?>'>
-					</div>
-				</div>
-
-
-				<div class="control-group">
-					<label class="control-label" for="login">Login</label>
-					<div class="controls">
-						<input type="text" id="login" name="login" placeholder="login" value='<?php if(isset($login)) echo $login; ?>'>
-					</div>
-				</div>
-				
-				<div class="control-group">
-					<label class="control-label" for="senha">Senha</label>
-					<div class="controls">
-						<input type="password" id="senha" name="senha" placeholder="<?= (isset($senha)) ? 'Nova senha' : 'Senha' ?>" value=''>
-					</div>
-				</div>
-
-				<div class="control-group">
-					<div class="controls">						
-						<a href="<?= URL ?>admin/lista/usuarios" class="btn btn-default"><i class="icon icon-reply"></i> Voltar</a>
-						<button class="btn btn-success"><i class="icon icon-ok"></i> <?= (isset($id)) ? "Salvar" : "Adicionar" ?>
-					</div>
-				</div>								
-				
-			</form>
-
-			</div> <!-- /widget-content -->						
-		</div> <!-- /widget -->	
-		
-	</div> <!-- span -->
-
-</div> <!-- row -->
+<div class="segura-form">
+	<form method="post" action="<?= URL . 'admin/' . $start->_action ?>/usuarios/<?php if(isset($id)) echo $id; ?>" enctype="multipart/form-data">
+		<div class="form-group">
+		    <label for="nome">Nome</label>
+		    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" value='<?php if(isset($nome)) echo $nome; ?>'>
+		 </div>
+		 <div class="form-group">
+		    <label for="login">Login</label>
+		    <input type="text" class="form-control" id="login" name="login" placeholder="login" value='<?php if(isset($login)) echo $login; ?>'>
+		 </div>
+		 <div class="form-group">
+		    <label for="imagem">Imagem</label>
+		    <input type="file" class="form-control" id="imagem" name="imagem">
+		 </div>
+		 <div class="form-group">
+		    <label for="senha">Senha</label>
+		    <input type="password" class="form-control" id="senha" name="senha" placeholder="<?= (isset($senha)) ? 'Nova senha' : 'Senha' ?>">
+		 </div>
+		 <div class="form-group">
+		 	<button class="btn btn-success"><i class="icon icon-ok"></i> <?= (isset($id)) ? "Salvar" : "Adicionar" ?>
+		 </div>
+	</form>
+</div>

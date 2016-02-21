@@ -1,69 +1,47 @@
-<div class="row">
-	<div class="span12"> <!-- LADO ESQUERDO -->
+<div class="titulo">
+	<h1>Listar Contatos</h1>
+</div>
 
-		<div class="widget widget-table action-table">
-			<div class="widget-header">
-				<i class="icon-tags"></i>
-				<h3>contato</h3>
-			</div> <!-- /widget-header -->
+<div class="segura-tabela">
+	<table class="table table-striped table-bordered data-table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Data</th>
+				<th>Nome</th>
+				<th>Email</th>
+				<th>Mensagem</th>
+				<th class="td-actions">Ações</th>
+			</tr>
+		</thead>
+		<tbody>
 
+		<?php foreach ( $info as $i):
+				extract($i) ?>
 
+			<tr>
+				<td><?= $id_contato ?></td>
+				<td><?= date("d/m/Y - H:m:s", strtotime($data)) ?></td>
+				<td><?= $nome ?></td>
+				<td><?= $email ?></td>
+				<td><?= $mensagem ?></td>
 
-			<div class="widget-content wid-data-table">
-                <table class="table table-striped table-bordered data-table">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Data</th>
-							<th>Nome</th>
-							<th>Email</th>
-							<th>Mensagem</th>
-							<th class="td-actions">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
+				<td class='td-actions'>
 
-					<?php foreach ( $info as $i):
-							extract($i) ?>
+					<!-- EDITAR -->
+					<a title='editar' href='<?= URL ?>admin/edit/contato/<?= $id_contato ?>' class='btn btn-small btn-success'>
+						<i class='btn-icon-only icon-pencil'></i>
+					</a>
 
-						<tr>
-							<td><?= $id_contato ?></td>
-							<td><?= date("d/m/Y - H:m:s", strtotime($data)) ?></td>
-							<td><?= $nome ?></td>
-							<td><?= $email ?></td>
-							<td><?= $mensagem ?></td>
+					<!-- EXCLUIR -->
+					<a id="delete<?= $id_contato ?>" title='excluir' data='<?= URL ?>admin/del/contato/<?= $id_contato ?>' onclick="del(this.id)" class='btn btn-small btn-danger'>
+						<i class='btn-icon-only icon-remove'></i>
+					</a>
+				</td>
+			</tr>
 
-							<td class='td-actions'>
+		<?php endforeach; ?>
 
-								<!-- EDITAR -->
-								<a title='editar' href='<?= URL ?>admin/edit/contato/<?= $id_contato ?>' class='btn btn-small btn-success'>
-									<i class='btn-icon-only icon-pencil'></i>
-								</a>
-
-								<!-- EXCLUIR -->
-								<a id="delete<?= $id_contato ?>" title='excluir' data='<?= URL ?>admin/del/contato/<?= $id_contato ?>' onclick="del(this.id)" class='btn btn-small btn-danger'>
-									<i class='btn-icon-only icon-remove'></i>
-								</a>
-							</td>
-						</tr>
-
-					<?php endforeach; ?>
-
-					</tbody>
-				</table>
-			</div> <!-- /widget-content -->
-		</div> <!-- /widget -->
-
-</div> <!-- row -->
-
-
-
-<script type="text/javascript">
-
-	$('input[name="destaque"]').change(function() {
-		this.form.submit(function(e){
-			e.preventDefault();
-		});
-	});
-
-</script>
+		</tbody>
+	</table>
+</div>

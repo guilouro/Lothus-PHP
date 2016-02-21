@@ -20,28 +20,31 @@
 </head>
 
   <body>
-    
+    <div class="botao-menu">
+      <i class="fa fa-bars"></i>  
+    </div>
     <div class="menu-lateral">
       <div class="row segura-logo">
-        <div class="logo">
-          <div class="logo__img">
-            <img src="<?= IMG ?>logo.png" alt="">
-          </div> 
-          <div class="logo__texto">
-            teste
+          <div class="logo">
+            <div class="logo__img">
+              <img src="<?= IMG ?>logo.png" alt="">
+            </div> 
+            <div class="logo__texto">
+              teste
+            </div>
           </div>
-        </div>
       </div>
       
       <div class="row segura-user">
         <div class="user">
-          <div class="user__img">
-            <img src="<?= IMG ?>face.png" alt="">
-          </div>
-
-          <div class="user__nome">
-            <?= $_SESSION['user']?>
-          </div>
+          <a href="<?=URL?>admin/edit/usuarios/<?= $_SESSION['dados_usuario']['id_developer']?>">
+            <div class="user__img">
+              <img src="<?= URL ?>files/<?= $_SESSION['dados_usuario']['imagem'] ?>" alt="">
+            </div>
+            
+            <div class="user__nome">
+              <?= $_SESSION['dados_usuario']['nome']?>
+            </div></a>
         </div>
       </div>
 
@@ -61,15 +64,22 @@
 
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="icon-user"></i>
-            <span>Usuários</span>
+            <i class="glyphicon glyphicon-envelope"></i>
+            <span>Contatos</span>
             <b class="caret"></b>
           </a>
 
           <ul class="dropdown-menu sublista">
-            <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li>
-            <li><a href="<?= URL ?>admin/lista/usuarios"><i class="icon-list"></i> Listar</a></li>
+            <!-- <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li> -->
+            <li><a href="<?= URL ?>admin/lista/contato"><i class="icon-list"></i> Listar</a></li>
           </ul>
+        </li>
+
+        <li>
+          <a href="#">
+            <i><img src="<?=IMG?>sair.png" alt=""></i>
+           <a href="<?= URL?>admin/logout">Sair</a>
+          </a>
         </li>
 
       </ul>
@@ -79,8 +89,9 @@
 
 
     <div class="conteudo">
-      
+      {conteudo}
     </div>
+
     
   </body>
     
@@ -90,14 +101,14 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="<?=URL?>js/admin.js"></script>
 <script src="<?= URL ?>js/tinymce/tinymce.min.js"></script>
 <script src="<?= URL ?>js/jquery.maskedinput.js"></script>
 <script src="<?= URL ?>js/datatables.min.js"></script>
 
 <script type='text/javascript' id="__bs_script__">//<![CDATA[
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.11.1.js'><\/script>".replace("HOST", location.hostname));
-    </script>
-//]]></script>
+</script>
 
 <script type="text/javascript">
 

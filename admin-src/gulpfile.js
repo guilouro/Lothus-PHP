@@ -75,7 +75,7 @@ gulp.task('imagemin', function() {
 gulp.task('watch', function() {
     livereload.listen();
     gulp.watch('css/*.styl', ['stylus']);
-    gulp.watch(path.src+'/js/*.js', [ (env.fy) ? 'browserify' : 'js']);
+    gulp.watch('js/*.js', [ (env.fy) ? 'browserify' : 'js']);
     gulp.watch(path.src+'/img/**/*.{jpg, png, gif}', ['imagemin']);
 });
 
@@ -117,7 +117,7 @@ gulp.task('deploy', function(){
 // For use browserify  => gulp --fy
 
 // Task
-gulp.task('default', ['stylus', 'imagemin', 'watch', 'browser-sync']);
+gulp.task('default', ['js','stylus', 'imagemin', 'watch', 'browser-sync']);
 
 // Build and Deploy
 gulp.task('build', [(env.fy) ? 'browserify' : 'js', 'stylus', 'imagemin', 'deploy']);
