@@ -146,6 +146,7 @@ class admin extends Controller
 				$this->_dados[$key] = $this->bd->consulta("SELECT * FROM `{$key}` {$order}");
 			}
 		}
+		
 		$this->_dados['action'] = "Adicionar";
 		$this->view($params[0], $this->_dados);
 
@@ -216,7 +217,9 @@ class admin extends Controller
 		$this->_dados['action'] = "Editar";
 
 		if($params[0] == 'usuarios'){
-			$_SESSION['dados_usuario']['imagem'] = $this->_dados['dados']['imagem'];
+			$newDados = $this->bd->getNovosDados();
+			$_SESSION['dados_usuario']['imagem'] = $newDados['imagem'];
+			$_SESSION['dados_usuario']['nome'] = $newDados['nome'];
 		}
 
 		$this->view($params[0], $this->_dados);

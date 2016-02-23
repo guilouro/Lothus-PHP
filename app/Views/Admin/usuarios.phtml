@@ -3,11 +3,11 @@
 	if(isset($dados)) extract($dados);
 ?>
 
-<div class="titulo">
+<div class="title">
 	<h1><?= $action ?> Usuários</h1>
 </div>
 
-<div class="segura-form">
+<div class="widget-form">
 	<form method="post" action="<?= URL . 'admin/' . $start->_action ?>/usuarios/<?php if(isset($id)) echo $id; ?>" enctype="multipart/form-data">
 		<div class="form-group">
 		    <label for="nome">Nome</label>

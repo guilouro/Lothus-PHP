@@ -20,35 +20,35 @@
 </head>
 
   <body>
-    <div class="botao-menu">
+    <div class="menu-button">
       <i class="fa fa-bars"></i>  
     </div>
-    <div class="menu-lateral">
-      <div class="row segura-logo">
+    <div class="lateral-menu">
+      <div class="row logo-widget">
           <div class="logo">
             <div class="logo__img">
               <img src="<?= IMG ?>logo.png" alt="">
             </div> 
-            <div class="logo__texto">
+            <div class="logo__text">
               teste
             </div>
           </div>
       </div>
       
-      <div class="row segura-user">
+      <div class="row user-widget">
         <div class="user">
           <a href="<?=URL?>admin/edit/usuarios/<?= $_SESSION['dados_usuario']['id_developer']?>">
             <div class="user__img">
               <img src="<?= URL ?>files/<?= $_SESSION['dados_usuario']['imagem'] ?>" alt="">
             </div>
             
-            <div class="user__nome">
+            <div class="user__name">
               <?= $_SESSION['dados_usuario']['nome']?>
             </div></a>
         </div>
       </div>
 
-      <ul class="lista">
+      <ul class="list">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="icon-user"></i>
@@ -56,7 +56,7 @@
             <b class="caret"></b>
           </a>
 
-          <ul class="dropdown-menu sublista">
+          <ul class="dropdown-menu sublist">
             <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li>
             <li><a href="<?= URL ?>admin/lista/usuarios"><i class="icon-list"></i> Listar</a></li>
           </ul>
@@ -69,7 +69,7 @@
             <b class="caret"></b>
           </a>
 
-          <ul class="dropdown-menu sublista">
+          <ul class="dropdown-menu sublist">
             <!-- <li><a href="<?= URL ?>admin/add/usuarios"><i class="icon-plus-sign"></i> Adicionar</a></li> -->
             <li><a href="<?= URL ?>admin/lista/contato"><i class="icon-list"></i> Listar</a></li>
           </ul>
@@ -106,9 +106,7 @@
 <script src="<?= URL ?>js/jquery.maskedinput.js"></script>
 <script src="<?= URL ?>js/datatables.min.js"></script>
 
-<script type='text/javascript' id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.11.1.js'><\/script>".replace("HOST", location.hostname));
-</script>
+
 
 <script type="text/javascript">
 
