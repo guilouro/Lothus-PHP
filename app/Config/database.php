@@ -7,7 +7,7 @@ class DATABASE_CONFIG
     public static $staging = array(
         'host' => 'localhost',
         'login' => 'root',
-        'senha' => 'poi123',
+        'senha' => '',
         'banco' => 'teste',
     );
 
