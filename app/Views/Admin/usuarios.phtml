@@ -8,6 +8,11 @@
 </div>
 
 <div class="widget-form">
+	<?php if (isset($status)): ?>
+		<div class="notification">
+			<?= $status ?>
+		</div>
+	<?php endif ?>
 	<form method="post" action="<?= URL . 'admin/' . $start->_action ?>/usuarios/<?php if(isset($id)) echo $id; ?>" enctype="multipart/form-data">
 		<div class="form-group">
 		    <label for="nome">Nome</label>

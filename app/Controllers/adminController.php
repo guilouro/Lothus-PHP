@@ -217,7 +217,7 @@ class admin extends Controller
 		$this->_dados['action'] = "Editar";
 
 		if($params[0] == 'usuarios'){
-			$newDados = $this->bd->getNovosDados();
+			$newDados = $this->bd->getCurrentUser();
 			$_SESSION['dados_usuario']['imagem'] = $newDados['imagem'];
 			$_SESSION['dados_usuario']['nome'] = $newDados['nome'];
 		}

@@ -18,7 +18,7 @@
 		);
 
 
-		public function getNovosDados()
+		public function getCurrentUser()
 		{
 			return $this->consultaLinha("SELECT * FROM developer WHERE id_developer = " .$_SESSION['dados_usuario']['id_developer']);
 		}
