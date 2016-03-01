@@ -381,7 +381,8 @@ th {
   }
 }
 @media (max-width: 767px) {
-  .hidden-xs {
+  .hidden-xs,
+  .icon {
     display: none !important;
   }
 }
@@ -4139,6 +4140,9 @@ input[type="button"].btn-block {
 body {
   height: 1000px;
 }
+.icon {
+  width: 20px;
+}
 .side-menu {
   color: #fff;
   padding: 0;
@@ -4185,10 +4189,14 @@ body {
   width: 119px;
   margin: 0 auto;
 }
+.list li span {
+  font-size: 16px;
+}
 .list li a {
   color: #fff;
   text-decoration: none;
   text-align: center;
+  font-size: 16px;
 }
 .sublist {
   margin: 10px 0;
@@ -4247,6 +4255,24 @@ body {
   font-size: 18px;
   margin-bottom: 20px;
 }
+input[type="search"] {
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: 28px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+input[type="search"]:focus {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102,175,233,0.6);
+}
 @media (min-width: 35.4375em) and (max-width: 50em) {
   .logo__text {
     padding: 24px 0;
@@ -4262,12 +4288,12 @@ body {
   .side-menu {
     position: absolute;
     display: table;
-    top: -457px;
+    top: -520px;
     padding: 35px 0;
     z-index: 999;
     height: auto;
     width: 100%;
-    background-color: rgba(44,71,98,0.9);
+    background-color: #2c4762;
   }
   .side-menu .logo-widget {
     padding: 10px 0;
@@ -4285,14 +4311,17 @@ body {
     margin: 0;
   }
   .list li {
-    width: 100%;
-    margin: 10px 0;
+    width: 80%;
+    margin: 10px auto;
     padding: 10px;
-    background-color: rgba(0,0,0,0.9);
+    background-color: #000;
     text-align: center;
   }
 }
 @media (max-width: 35.4375em) {
+  .menu-button {
+    position: fixed;
+  }
   .row {
     margin: 0;
   }
@@ -4300,11 +4329,13 @@ body {
     padding: 24px 0;
   }
   .side-menu {
-    position: absolute;
+    position: fixed;
+    width: 100%;
+    height: 100%;
     display: table;
-    top: -950px;
+    top: -690px;
     z-index: 999;
-    background-color: rgba(44,71,98,0.9);
+    background-color: #2c4762;
   }
   .side-menu .logo-widget {
     padding: 10px 0;
@@ -4322,8 +4353,8 @@ body {
     margin: 0;
   }
   .list li {
-    width: 100%;
-    margin: 10px 0;
+    width: 80%;
+    margin: 10px auto;
     padding: 10px;
     background-color: rgba(0,0,0,0.9);
     text-align: center;
