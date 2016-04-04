@@ -61,12 +61,8 @@ class AuthHelper
 		{
 			$strUser = "(";
 			foreach ($this->_userColumn as $key => $str) {
-				$strUser .= $str . " = '" . $this ->_user . "' ";
-				
-				if($key != count($this->_userColumn) - 1)
-					$strUser .= " OR ";
-				else
-					$strUser .= ")";
+				$strUser .= $str . " = '" . $this ->_user . "' ";				
+				$strUser .= ($key != count($this->_userColumn) - 1) ? " OR " : ")";
 			}
 		}
 		else
@@ -81,20 +77,8 @@ class AuthHelper
 		//SE EXISTIR ELE LOGA E CRIA A SESSÃO
 		if(count($sql) > 0 AND !empty($sql) )
 		{
-			//VERIFICA SE SÃO VÁRIAS COLUNAS
-			if(is_array($this->_userColumn))
-			{
-				//VERIFICA SE A COLUNA DO NOME DO USUÁRIO ESTÁ SETADA
-				if(!empty($this->_userNameColumn))
-					$_SESSION['user'] = $sql[$this->_userNameColumn];
-				
-				//SE NÂO ESTIVER PEGA A PRIMEIRA POSIÇÃO DO ARRAY
-				else
-					$_SESSION['user'] = $sql[$this->_userColumn[0]];
-			}
-			else
-				$_SESSION['user'] = $sql[$this->_userColumn];
-
+			
+			$_SESSION['user'] = $this->getUserColumn($sql);
 			$_SESSION['dados_usuario'] = $sql;
 			$_SESSION['logado'] = 1;
 			$_SESSION['hash'] = sha1($this->database['banco']);
@@ -146,5 +130,22 @@ class AuthHelper
 		//return "SELECT * FROM ´" . $this -> _tableName . "´ WHERE " . $where;
 		$this -> _bd -> _tabela = $this -> _tableName;
 		return $this -> _bd -> readLine($where);
+	}
+
+	public function getUserColumn($sql)
+	{
+		//VERIFICA SE SÃO VÁRIAS COLUNAS
+		if(is_array($this->_userColumn))
+		{
+			//VERIFICA SE A COLUNA DO NOME DO USUÁRIO ESTÁ SETADA
+			if(!empty($this->_userNameColumn))
+				return $sql[$this->_userNameColumn];
+			
+			//SE NÂO ESTIVER PEGA A PRIMEIRA POSIÇÃO DO ARRAY
+			else
+				return $sql[$this->_userColumn[0]];
+		}
+		else
+			return $sql[$this->_userColumn];
 	}
 }
