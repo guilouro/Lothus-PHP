@@ -11,6 +11,7 @@ class AuthHelper
 	private $_tableName;
 	private $_userColumn		= 'login';
 	private $_senhaColumn		= 'senha';
+	private $_userNameColumn;
 	private $_user;
 	private $_senha;
 	private $_controllerLogado 	= 'admin';
@@ -55,8 +56,20 @@ class AuthHelper
 		//PASSO A TABELA QUE ESTÁ OS DADOS PARA LOGIN
 		$this -> _bd->_tabela = $this->_tableName;
 
+		//VERIFICA SE É MAIS DE UMA COLUNA PARA O LOGIN E MONTA A STRING
+		if(is_array($this->_userColumn))
+		{
+			$strUser = "(";
+			foreach ($this->_userColumn as $key => $str) {
+				$strUser .= $str . " = '" . $this ->_user . "' ";				
+				$strUser .= ($key != count($this->_userColumn) - 1) ? " OR " : ")";
+			}
+		}
+		else
+			$strUser = $this->_userColumn . " = '" . $this->_user . "'";
+
 		//DEFINO A STRING DE COMPARAÇÃO
-		$where = $this->_userColumn . " = '" . $this->_user . "' AND " . $this->_senhaColumn . " = '" . hash('sha512', $this->_senha) . "'";
+		$where = $strUser . " AND " . $this->_senhaColumn . " = '" . hash('sha512', $this->_senha) . "'";
 
 		//FAZ A CONSULTA
 		$sql = $this -> _bd -> readLine($where);
@@ -64,7 +77,8 @@ class AuthHelper
 		//SE EXISTIR ELE LOGA E CRIA A SESSÃO
 		if(count($sql) > 0 AND !empty($sql) )
 		{
-			$_SESSION['user'] = $sql[$this->_userColumn];
+			
+			$_SESSION['user'] = $this->getUserColumn($sql);
 			$_SESSION['dados_usuario'] = $sql;
 			$_SESSION['logado'] = 1;
 			$_SESSION['hash'] = sha1($this->database['banco']);
@@ -116,5 +130,22 @@ class AuthHelper
 		//return "SELECT * FROM ´" . $this -> _tableName . "´ WHERE " . $where;
 		$this -> _bd -> _tabela = $this -> _tableName;
 		return $this -> _bd -> readLine($where);
+	}
+
+	public function getUserColumn($sql)
+	{
+		//VERIFICA SE SÃO VÁRIAS COLUNAS
+		if(is_array($this->_userColumn))
+		{
+			//VERIFICA SE A COLUNA DO NOME DO USUÁRIO ESTÁ SETADA
+			if(!empty($this->_userNameColumn))
+				return $sql[$this->_userNameColumn];
+			
+			//SE NÂO ESTIVER PEGA A PRIMEIRA POSIÇÃO DO ARRAY
+			else
+				return $sql[$this->_userColumn[0]];
+		}
+		else
+			return $sql[$this->_userColumn];
 	}
 }
