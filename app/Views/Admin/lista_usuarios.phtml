@@ -1,59 +1,42 @@
-<div class="row">
-	<div class="span12"> <!-- LADO ESQUERDO -->
+<div class="title">
+	<h1>Listar Usuários</h1>
+</div>
 
-		<div class="widget widget-table action-table">
-			<div class="widget-header">
-				<i class="icon-user"></i>
-				<h3>Usuários</h3>
-			</div> <!-- /widget-header -->
+<div class="widget-table">
+	<table class="table table-striped table-bordered data-table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nome</th>
+				<th>login</th>
+				<th class="td-actions">Ações</th>
+			</tr>
+		</thead>
+		<tbody>
 
+		<?php foreach ( $info as $i):
+				extract($i) ?>
 
+			<tr>
+				<td><?= $id_developer ?></td>
+				<td><?= $nome ?></td>
+				<td><?= $login ?></td>
+				<td class='td-actions'>
 
-			<div class="widget-content wid-data-table">
-                <table class="table table-striped table-bordered data-table">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Nome</th>
-							<th>login</th>
-							<th class="td-actions">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
+					<!-- EDITAR -->
+					<a title='editar' href='<?= URL ?>admin/edit/usuarios/<?= $id_developer ?>' class='btn btn-small btn-success'>
+						<i class='btn-icon-only icon-pencil'></i>
+					</a>
 
-					<?php foreach ( $info as $i):
-							extract($i) ?>
+					<!-- EXCLUIR -->
+					<a id="delete<?= $id_developer ?>" title='excluir' data='<?= URL ?>admin/del/usuarios/<?= $id_developer ?>' onclick="del(this.id)" class='btn btn-small btn-danger'>
+						<i class='btn-icon-only icon-remove'></i>
+					</a>
+				</td>
+			</tr>
 
-						<tr>
-							<td><?= $id_developer ?></td>
-							<td><?= $nome ?></td>
-							<td><?= $login ?></td>
-							<td class='td-actions'>
+		<?php endforeach; ?>
 
-								<!-- EDITAR -->
-								<a title='editar' href='<?= URL ?>admin/edit/usuarios/<?= $id_developer ?>' class='btn btn-small btn-success'>
-									<i class='btn-icon-only icon-pencil'></i>
-								</a>
-
-								<!-- EXCLUIR -->
-								<a id="delete<?= $id_developer ?>" title='excluir' data='<?= URL ?>admin/del/usuarios/<?= $id_developer ?>' onclick="del(this.id)" class='btn btn-small btn-danger'>
-									<i class='btn-icon-only icon-remove'></i>
-								</a>
-							</td>
-						</tr>
-
-					<?php endforeach; ?>
-
-					</tbody>
-				</table>
-			</div> <!-- /widget-content -->
-		</div> <!-- /widget -->
-
-
-
-	</div>
-
-</div> <!-- row -->
-
-
-
+		</tbody>
+	</table>
+</div>

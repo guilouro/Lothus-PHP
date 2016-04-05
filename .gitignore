@@ -61,3 +61,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+src/node_modules
+src

@@ -50,6 +50,8 @@ class admin extends Controller
 		if(isset($this -> bd -> orderby[$this -> bd -> _tabela]))
 			$this -> _orderby = $this -> bd -> orderby[$this -> bd -> _tabela];
 
+
+
 	}
 
 	
@@ -144,7 +146,8 @@ class admin extends Controller
 				$this->_dados[$key] = $this->bd->consulta("SELECT * FROM `{$key}` {$order}");
 			}
 		}
-
+		
+		$this->_dados['action'] = "Adicionar";
 		$this->view($params[0], $this->_dados);
 
 	}
@@ -211,6 +214,13 @@ class admin extends Controller
 
 		//SE EXISTIR CAMPO SENHA ELE CODIFICA
 		//if(isset($this->_dados['dados']['senha'])) $this->_dados['dados']['senha'] = $this->_auth->decodifica($this->_dados['dados']['senha']);
+		$this->_dados['action'] = "Editar";
+
+		if($params[0] == 'usuarios'){
+			$newDados = $this->bd->getCurrentUser();
+			$_SESSION['dados_usuario']['imagem'] = $newDados['imagem'];
+			$_SESSION['dados_usuario']['nome'] = $newDados['nome'];
+		}
 
 		$this->view($params[0], $this->_dados);
 	}
